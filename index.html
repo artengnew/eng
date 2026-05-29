@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>คอร์สภาษาอังกฤษ: พื้นฐาน → พูดได้ (Grammar + Tense + คำศัพท์)</title>
+<style>
+  :root{
+    --ink:#1e293b; --muted:#64748b; --card:#fff;
+    --brand:#6366f1; --brand2:#8b5cf6;
+    --green:#10b981; --amber:#f59e0b; --rose:#f43f5e; --sky:#0ea5e9;
+    --shadow:0 10px 30px rgba(2,6,23,.12); --radius:18px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:"Segoe UI","Sarabun",system-ui,-apple-system,sans-serif;color:var(--ink);
+    background:linear-gradient(135deg,#eef2ff,#faf5ff 50%,#f0fdfa);line-height:1.65;min-height:100vh}
+
+  header{background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;padding:44px 20px 56px;text-align:center;position:relative;overflow:hidden}
+  header h1{font-size:clamp(24px,5vw,40px);font-weight:800;animation:dropIn .8s ease}
+  header p{opacity:.95;margin-top:10px;font-size:clamp(13px,2.5vw,17px);animation:dropIn 1s ease}
+  .floaty{position:absolute;font-size:46px;opacity:.16;animation:float 6s ease-in-out infinite}
+  .floaty:nth-child(1){top:18px;left:7%}.floaty:nth-child(2){bottom:8px;right:9%;animation-delay:1.5s}.floaty:nth-child(3){top:36px;right:20%;animation-delay:3s}
+  @keyframes float{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-16px) rotate(8deg)}}
+  @keyframes dropIn{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:none}}
+
+  nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);backdrop-filter:blur(12px);
+    box-shadow:0 2px 12px rgba(2,6,23,.06);display:flex;gap:6px;overflow-x:auto;padding:10px 12px;justify-content:center;flex-wrap:wrap}
+  nav button{border:0;background:transparent;color:var(--muted);font-weight:700;font-size:13.5px;padding:8px 14px;border-radius:999px;cursor:pointer;white-space:nowrap;transition:.25s}
+  nav button:hover{background:#eef2ff;color:var(--brand)}
+  nav button.active{background:var(--brand);color:#fff;box-shadow:0 6px 16px rgba(99,102,241,.4)}
+
+  main{max-width:1000px;margin:0 auto;padding:26px 16px 80px}
+  section{display:none;animation:fadeUp .5s ease}
+  section.show{display:block}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+
+  .card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px;margin-bottom:20px;border:1px solid rgba(99,102,241,.08)}
+  h2{font-size:23px;font-weight:800;margin-bottom:6px;display:flex;align-items:center;gap:10px}
+  h2 .emoji{font-size:28px}
+  .sub{color:var(--muted);margin-bottom:16px}
+  h3{font-size:17px;font-weight:800;margin:18px 0 8px;color:var(--brand)}
+  h4{font-size:15px;font-weight:800;margin:14px 0 6px;color:#334155}
+  p.note{color:var(--muted);font-size:14px;margin:6px 0}
+
+  .ex{display:flex;align-items:center;gap:12px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:14px;padding:11px 14px;margin:8px 0;transition:.2s}
+  .ex:hover{transform:translateX(4px);border-color:var(--brand);box-shadow:0 4px 14px rgba(99,102,241,.12)}
+  .ex .en{font-weight:700;font-size:16px}
+  .ex .th{color:var(--muted);font-size:14px}
+  .ex .txt{flex:1}
+  .neg{border-left:5px solid var(--rose)} .que{border-left:5px solid var(--amber)} .aff{border-left:5px solid var(--green)}
+  .speak{flex:none;width:42px;height:42px;border-radius:50%;border:0;cursor:pointer;background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;font-size:18px;display:grid;place-items:center;transition:.2s;box-shadow:0 4px 12px rgba(99,102,241,.35)}
+  .speak:hover{transform:scale(1.12)}
+  .speak.playing{animation:pulse 1s infinite}
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(99,102,241,.5)}50%{box-shadow:0 0 0 10px rgba(99,102,241,0)}}
+  .speak.sm{width:34px;height:34px;font-size:14px}
+
+  .formula{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0;font-weight:800}
+  .chip{padding:8px 13px;border-radius:12px;color:#fff;animation:popIn .4s ease backwards}
+  .chip.subj{background:var(--sky)}.chip.verb{background:var(--green)}.chip.aux{background:var(--amber)}.chip.obj{background:var(--brand2)}.chip.neg{background:var(--rose)}.chip.plus{background:#cbd5e1;color:#334155}
+  @keyframes popIn{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:scale(1)}}
+
+  /* ---------- TIMELINE (animated, one per tense) ---------- */
+  .tl{position:relative;height:96px;background:#f1f5f9;border-radius:14px;margin:14px 0 6px;overflow:hidden;border:1px solid #e2e8f0}
+  .tl .axis{position:absolute;top:58%;left:5%;right:5%;height:3px;background:#cbd5e1;border-radius:3px}
+  .tl .now{position:absolute;top:16px;bottom:16px;left:50%;width:2px;background:var(--rose)}
+  .tl .now::after{content:"NOW";position:absolute;top:-3px;left:5px;font-size:10px;font-weight:800;color:var(--rose)}
+  .tl .pastL,.tl .futL{position:absolute;top:7px;font-size:10px;font-weight:800;color:#94a3b8}
+  .tl .pastL{left:10px}.tl .futL{right:10px}
+  .tl .cap{position:absolute;bottom:6px;left:0;right:0;text-align:center;font-size:11px;color:#64748b;font-weight:700}
+  .m{position:absolute;top:58%;transform:translate(-50%,-50%);width:16px;height:16px;border-radius:50%;box-shadow:0 0 0 4px #fff}
+  .bar{position:absolute;top:58%;transform:translateY(-50%);height:11px;border-radius:7px;opacity:.9}
+  .arrow{position:absolute;top:58%;transform:translateY(-50%);height:3px;border-radius:3px}
+  .arrow::after{content:"";position:absolute;right:-2px;top:-3px;border-left:8px solid currentColor;border-top:5px solid transparent;border-bottom:5px solid transparent}
+  /* animations */
+  @keyframes blink{0%,100%{opacity:1;transform:translate(-50%,-50%) scale(1)}50%{opacity:.35;transform:translate(-50%,-50%) scale(.8)}}
+  @keyframes run{0%{left:10%}50%{left:50%}100%{left:90%}}
+  @keyframes runPast{0%{left:12%}50%{left:30%}100%{left:46%}}
+  @keyframes runFut{0%{left:54%}50%{left:72%}100%{left:88%}}
+  @keyframes grow{0%{width:0}100%{width:var(--w)}}
+  @keyframes growLoop{0%{width:0;opacity:.4}80%{opacity:.9}100%{width:var(--w);opacity:.9}}
+  @keyframes drop{0%{opacity:0;transform:translate(-50%,-160%)}60%{opacity:1;transform:translate(-50%,-50%)}100%{opacity:1;transform:translate(-50%,-50%)}}
+  .a-blink{animation:blink 1.6s ease-in-out infinite}
+  .a-run{animation:run 2.6s ease-in-out infinite}
+  .a-runPast{animation:runPast 2.4s ease-in-out infinite}
+  .a-runFut{animation:runFut 2.4s ease-in-out infinite}
+  .a-grow{animation:growLoop 2.6s ease-in-out infinite}
+  .a-drop{animation:drop 1.8s ease infinite}
+
+  .tip{background:linear-gradient(135deg,#fef3c7,#fde68a);border-radius:12px;padding:11px 15px;margin:12px 0;font-weight:600;color:#92400e;border-left:5px solid var(--amber)}
+  .warn{background:linear-gradient(135deg,#ffe4e6,#fecdd3);border-radius:12px;padding:11px 15px;margin:12px 0;font-weight:600;color:#9f1239;border-left:5px solid var(--rose)}
+  .ok{background:linear-gradient(135deg,#d1fae5,#a7f3d0);border-radius:12px;padding:11px 15px;margin:12px 0;font-weight:600;color:#065f46;border-left:5px solid var(--green)}
+  .pill{display:inline-block;background:#eef2ff;color:var(--brand);font-weight:800;font-size:12px;padding:4px 12px;border-radius:999px;margin-bottom:8px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+  @media(max-width:640px){.grid2,.grid3{grid-template-columns:1fr}}
+  .pcard{background:#f8fafc;border-radius:14px;padding:14px;border:1px solid #e2e8f0;transition:.2s}
+  .pcard:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--brand)}
+  .pcard b{color:var(--brand)}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  .tbl-wrap{overflow-x:auto}
+  th{background:var(--brand);color:#fff;padding:9px;text-align:center}
+  td{padding:9px;text-align:center;border-bottom:1px solid #eef2f6}
+  .net{font-size:12px;color:var(--muted);margin-top:6px}
+
+  /* dictionary */
+  .search{display:flex;gap:10px;margin:6px 0 14px;flex-wrap:wrap}
+  .search input{flex:1;min-width:200px;padding:13px 16px;border-radius:14px;border:2px solid #e2e8f0;font-size:16px;outline:none;transition:.2s}
+  .search input:focus{border-color:var(--brand);box-shadow:0 0 0 4px rgba(99,102,241,.12)}
+  .btn{padding:13px 20px;border:0;border-radius:14px;background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;font-weight:800;cursor:pointer;font-size:15px;transition:.2s}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(99,102,241,.4)}
+  .btn.ghost{background:#fff;color:var(--brand);border:2px solid var(--brand)}
+  .result{background:#f8fafc;border-radius:14px;padding:16px;border:1px solid #e2e8f0;min-height:60px}
+  .result .word{font-size:25px;font-weight:800;color:var(--brand)}
+  .result .phon{color:var(--muted);font-style:italic;margin-left:8px;font-size:16px}
+  .result .pos{display:inline-block;background:#eef2ff;color:var(--brand);font-size:12px;font-weight:800;padding:3px 10px;border-radius:8px;margin:10px 0 4px}
+  .wchip{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:7px 12px;cursor:pointer;font-weight:700;font-size:14px;transition:.2s;display:inline-block;margin:3px}
+  .wchip:hover{background:var(--brand);color:#fff;transform:translateY(-2px)}
+  .spinner{width:26px;height:26px;border:3px solid #e2e8f0;border-top-color:var(--brand);border-radius:50%;animation:spin .8s linear infinite;margin:10px auto}
+  @keyframes spin{to{transform:rotate(360deg)}}
+
+  /* quiz */
+  .q{margin-bottom:18px}
+  .q .opts{display:grid;gap:9px;margin-top:10px}
+  .opt{padding:12px 15px;border-radius:12px;border:2px solid #e2e8f0;background:#fff;cursor:pointer;font-weight:700;transition:.2s;text-align:left}
+  .opt:hover{border-color:var(--brand)}
+  .opt.correct{background:#dcfce7;border-color:var(--green);color:#065f46}
+  .opt.wrong{background:#fee2e2;border-color:var(--rose);color:#991b1b}
+  .score{font-size:19px;font-weight:800;text-align:center;padding:14px;border-radius:14px;background:#eef2ff;color:var(--brand);margin-top:10px;display:none}
+
+  /* vocab game */
+  .vstat{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+  .vstat .box{flex:1;min-width:90px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:14px;padding:12px;text-align:center}
+  .vstat .box b{display:block;font-size:24px;color:var(--brand)}
+  .vstat .box span{font-size:12px;color:var(--muted);font-weight:700}
+  .vword{text-align:center;padding:22px 10px;background:linear-gradient(135deg,#eef2ff,#faf5ff);border-radius:16px;margin-bottom:14px}
+  .vword .w{font-size:40px;font-weight:800;color:var(--brand)}
+  .vword .pos{color:var(--muted);font-weight:700;margin-top:4px}
+  .vopts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  @media(max-width:560px){.vopts{grid-template-columns:1fr}}
+  .vopt{padding:15px;border-radius:14px;border:2px solid #e2e8f0;background:#fff;cursor:pointer;font-weight:800;font-size:17px;transition:.2s;text-align:center}
+  .vopt:hover{border-color:var(--brand);transform:translateY(-2px)}
+  .vopt.correct{background:#dcfce7;border-color:var(--green);color:#065f46;animation:popIn .4s}
+  .vopt.wrong{background:#fee2e2;border-color:var(--rose);color:#991b1b}
+  .vctx{background:#fff;border:2px solid var(--green);border-radius:16px;padding:18px;margin-top:16px;display:none;animation:fadeUp .5s ease}
+  .vctx.show{display:block}
+  .vctx .lead{color:var(--green);font-weight:800;margin-bottom:10px}
+  .vctx .sent{font-size:18px;font-weight:700;display:flex;align-items:center;gap:10px}
+  .vctx .sentth{color:var(--muted);margin-top:6px;font-size:15px}
+
+  /* level engine UI */
+  .lvbar{background:linear-gradient(135deg,#eef2ff,#faf5ff);border:1px solid #e2e8f0;border-radius:16px;padding:14px 16px;margin-bottom:14px}
+  .lvtop{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+  .lvbadge{display:flex;align-items:center;gap:10px}
+  .lvbadge .num{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:18px;color:#fff;background:linear-gradient(135deg,var(--brand),var(--brand2));box-shadow:0 6px 16px rgba(99,102,241,.4);flex:none;animation:popIn .4s}
+  .lvbadge .meta b{font-size:15px;color:var(--ink);display:block}
+  .lvbadge .meta span{font-size:12px;color:var(--muted);font-weight:700}
+  .lvprog{flex:1;min-width:160px}
+  .lvprog .track{height:10px;background:#e2e8f0;border-radius:8px;overflow:hidden}
+  .lvprog .fill{height:100%;border-radius:8px;background:linear-gradient(90deg,var(--green),var(--sky),var(--brand));transition:width .5s ease}
+  .lvprog .lab{font-size:11px;color:var(--muted);font-weight:700;margin-top:4px;text-align:right}
+  .lvtoast{margin-top:10px;padding:9px 13px;border-radius:12px;font-weight:800;font-size:14px;display:none;animation:fadeUp .5s ease}
+  .lvtoast.up{display:block;background:linear-gradient(135deg,#d1fae5,#a7f3d0);color:#065f46;border-left:5px solid var(--green)}
+  .lvtoast.down{display:block;background:linear-gradient(135deg,#fef3c7,#fde68a);color:#92400e;border-left:5px solid var(--amber)}
+  .lvdots{display:flex;gap:5px;margin-top:8px;flex-wrap:wrap}
+  .lvdots .d{width:13px;height:13px;border-radius:50%;background:#e2e8f0;transition:.25s}
+  .lvdots .d.ok{background:var(--green)}
+  .lvdots .d.no{background:var(--rose)}
+  footer{text-align:center;color:var(--muted);font-size:13px;padding:24px}
+</style>
+</head>
+<body>
+
+<header>
+  <span class="floaty">📚</span><span class="floaty">🗣️</span><span class="floaty">🔤</span>
+  <h1>คอร์สภาษาอังกฤษ: พื้นฐาน → พูดได้ 🚀</h1>
+  <p>Grammar • 12 Tense (มี timeline ทุกตัว) • บทสนทนา • เกมคำศัพท์ • เสียงอ่าน 🔊 • ค้นหาศัพท์ออนไลน์ 🌐</p>
+</header>
+
+<nav id="nav">
+  <button class="active" data-t="start">🏁 เริ่มต้น</button>
+  <button data-t="basics">🧱 พื้นฐาน</button>
+  <button data-t="present">🟢 Present</button>
+  <button data-t="past">🟡 Past</button>
+  <button data-t="future">🔵 Future</button>
+  <button data-t="more">🔧 ไวยากรณ์+</button>
+  <button data-t="talk">🗣️ บทสนทนา</button>
+  <button data-t="dict">📖 ค้นหาศัพท์</button>
+  <button data-t="vocab">🎯 เกมคำศัพท์</button>
+  <button data-t="listen">🎧 เกมฟังเสียง</button>
+  <button data-t="quiz">🎮 แบบฝึกหัด</button>
+</nav>
+
+<main>
+<section id="start" class="show">
+  <div class="card">
+    <h2><span class="emoji">👋</span>ยินดีต้อนรับสู่คอร์สนี้</h2>
+    <p class="sub">ออกแบบสำหรับคน <b>ไม่เก่งภาษาอังกฤษ</b> — เรียงจากง่ายไปยาก ค่อยๆ ไต่จนพูดได้</p>
+    <h3>เส้นทางการเรียน (ทำตามลำดับนี้)</h3>
+    <div class="grid2">
+      <div class="pcard"><b>1. 🧱 พื้นฐาน</b><br>ชนิดคำ • โครงสร้างประโยค • verb to be • กริยา 3 ช่อง</div>
+      <div class="pcard"><b>2. 🟢🟡🔵 Tense</b><br>12 tense พร้อมแกนเวลา + บอกเล่า/ปฏิเสธ/คำถาม</div>
+      <div class="pcard"><b>3. 🔧 ไวยากรณ์+</b><br>Modal verbs • คำถาม WH • เปรียบเทียบ • บุพบท</div>
+      <div class="pcard"><b>4. 🗣️ บทสนทนา</b><br>ประโยคใช้จริง: ทักทาย • ร้านอาหาร • ถามทาง • ช้อปปิ้ง</div>
+      <div class="pcard"><b>5. 🎯 เกมคำศัพท์</b><br>สุ่มคำ → เลือกคำแปล → ดูตัวอย่าง + ฟังเสียง</div>
+      <div class="pcard"><b>6. 🎮 แบบฝึกหัด</b><br>ทดสอบ tense ให้คะแนน + คำใบ้</div>
+    </div>
+    <div class="tip">💡 กดปุ่มกลมม่วง 🔊 ที่ไหนก็ได้ เพื่อฟังเสียงอ่านภาษาอังกฤษ — ลองเลย!
+      <button class="speak sm" style="vertical-align:middle;margin-left:6px" onclick="speak('Let us learn English together. You can do it!',this)">🔊</button></div>
+  </div>
+
+  <div class="card">
+    <h2><span class="emoji">🗺️</span>แผนที่ 12 Tense</h2>
+    <p class="sub">3 ช่วงเวลา × 4 ลักษณะ = 12 tense</p>
+    <div class="tbl-wrap"><table style="min-width:560px">
+      <tr><th style="text-align:left">เวลา \ ลักษณะ</th><th>Simple<br><small>ทั่วไป</small></th><th>Continuous<br><small>กำลังทำ</small></th><th>Perfect<br><small>เสร็จแล้ว</small></th><th>Perfect Cont.<br><small>ต่อเนื่อง</small></th></tr>
+      <tr><td style="font-weight:800;background:#dcfce7">Present</td><td>V1 / Vs</td><td>am/is/are+ing</td><td>have/has+V3</td><td>have/has been+ing</td></tr>
+      <tr><td style="font-weight:800;background:#fef3c7">Past</td><td>V2</td><td>was/were+ing</td><td>had+V3</td><td>had been+ing</td></tr>
+      <tr><td style="font-weight:800;background:#dbeafe">Future</td><td>will+V1</td><td>will be+ing</td><td>will have+V3</td><td>will have been+ing</td></tr>
+    </table></div>
+    <div class="tip">👉 มือใหม่เริ่ม 3 ตัวนี้ก่อน: <b>Present Simple → Past Simple → Future Simple</b> แล้วค่อยขยับ</div>
+  </div>
+</section>
+<section id="basics">
+  <div class="card">
+    <h2><span class="emoji">🧱</span>ชนิดของคำ (Parts of Speech)</h2>
+    <p class="sub">"อิฐ" ที่ใช้ก่อร่างเป็นประโยค มี 8 ชนิดหลัก</p>
+    <div class="grid2">
+      <div class="pcard"><b>Noun (คำนาม)</b> — คน/สัตว์/สิ่งของ<br><small>cat, school, water, John</small></div>
+      <div class="pcard"><b>Pronoun (สรรพนาม)</b> — แทนคำนาม<br><small>I, you, he, she, it, we, they</small></div>
+      <div class="pcard"><b>Verb (คำกริยา)</b> — การกระทำ<br><small>run, eat, study, be, have</small></div>
+      <div class="pcard"><b>Adjective (คุณศัพท์)</b> — ขยายนาม<br><small>big, happy, red, beautiful</small></div>
+      <div class="pcard"><b>Adverb (วิเศษณ์)</b> — ขยายกริยา<br><small>quickly, very, well, slowly</small></div>
+      <div class="pcard"><b>Preposition (บุพบท)</b> — บอกตำแหน่ง/เวลา<br><small>in, on, at, under, with</small></div>
+      <div class="pcard"><b>Conjunction (สันธาน)</b> — เชื่อมคำ<br><small>and, but, or, because, so</small></div>
+      <div class="pcard"><b>Article (คำนำหน้านาม)</b><br><small>a, an, the</small></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2><span class="emoji">🙋</span>สรรพนาม (Pronouns) — ต้องจำให้ขึ้นใจ</h2>
+    <div class="tbl-wrap"><table style="min-width:520px">
+      <tr><th>ประธาน</th><th>กรรม</th><th>เจ้าของ</th><th>แปล</th><th>🔊</th></tr>
+      <tr><td>I</td><td>me</td><td>my/mine</td><td>ฉัน</td><td><button class="speak sm" onclick="speak('I, me, my',this)">🔊</button></td></tr>
+      <tr><td>You</td><td>you</td><td>your/yours</td><td>คุณ</td><td><button class="speak sm" onclick="speak('you, your',this)">🔊</button></td></tr>
+      <tr><td>He</td><td>him</td><td>his</td><td>เขา(ชาย)</td><td><button class="speak sm" onclick="speak('he, him, his',this)">🔊</button></td></tr>
+      <tr><td>She</td><td>her</td><td>her/hers</td><td>เธอ(หญิง)</td><td><button class="speak sm" onclick="speak('she, her, hers',this)">🔊</button></td></tr>
+      <tr><td>It</td><td>it</td><td>its</td><td>มัน</td><td><button class="speak sm" onclick="speak('it, its',this)">🔊</button></td></tr>
+      <tr><td>We</td><td>us</td><td>our/ours</td><td>พวกเรา</td><td><button class="speak sm" onclick="speak('we, us, our',this)">🔊</button></td></tr>
+      <tr><td>They</td><td>them</td><td>their/theirs</td><td>พวกเขา</td><td><button class="speak sm" onclick="speak('they, them, their',this)">🔊</button></td></tr>
+    </table></div>
+  </div>
+
+  <div class="card">
+    <h2><span class="emoji">🟰</span>Verb to be (is / am / are) — กริยาสำคัญที่สุด</h2>
+    <p class="sub">แปลว่า "เป็น / อยู่ / คือ" ใช้บอกว่าอะไรเป็นอะไร</p>
+    <div class="formula"><span class="chip subj">I</span><span class="chip aux">am</span><span class="chip plus">|</span><span class="chip subj">He/She/It</span><span class="chip aux">is</span><span class="chip plus">|</span><span class="chip subj">You/We/They</span><span class="chip aux">are</span></div>
+    <div class="ex aff"><div class="txt"><div class="en">I am a student.</div><div class="th">ฉันเป็นนักเรียน</div></div><button class="speak" onclick="speak('I am a student.',this)">🔊</button></div>
+    <div class="ex aff"><div class="txt"><div class="en">She is happy.</div><div class="th">เธอมีความสุข</div></div><button class="speak" onclick="speak('She is happy.',this)">🔊</button></div>
+    <div class="ex aff"><div class="txt"><div class="en">They are my friends.</div><div class="th">พวกเขาเป็นเพื่อนของฉัน</div></div><button class="speak" onclick="speak('They are my friends.',this)">🔊</button></div>
+    <div class="tip">💡 ปฏิเสธเติม not: I am not / She is not (isn't) / They are not (aren't)</div>
+  </div>
+
+  <div class="card">
+    <h2><span class="emoji">🔧</span>โครงสร้างประโยคบอกเล่า</h2>
+    <div class="formula"><span class="chip subj">ประธาน</span><span class="chip plus">+</span><span class="chip verb">กริยา</span><span class="chip plus">+</span><span class="chip obj">กรรม</span></div>
+    <div class="ex aff"><div class="txt"><div class="en">I eat rice.</div><div class="th">ฉัน + กิน + ข้าว</div></div><button class="speak" onclick="speak('I eat rice.',this)">🔊</button></div>
+    <div class="ex aff"><div class="txt"><div class="en">She loves music.</div><div class="th">เธอ + รัก + เพลง</div></div><button class="speak" onclick="speak('She loves music.',this)">🔊</button></div>
+  </div>
+
+  <div class="card">
+    <h2><span class="emoji">📰</span>A / An / The (คำนำหน้านาม)</h2>
+    <div class="grid3">
+      <div class="pcard"><b>a</b> + เสียงพยัญชนะ<br><small>a cat, a book, a dog</small></div>
+      <div class="pcard"><b>an</b> + เสียงสระ a e i o u<br><small>an apple, an egg, an hour</small></div>
+      <div class="pcard"><b>the</b> สิ่งที่รู้กันว่าอันไหน<br><small>the sun, the book (เล่มนั้น)</small></div>
+    </div>
+    <div class="tip">💡 a/an = อันหนึ่ง (ยังไม่เจาะจง) | the = อันนั้น (เจาะจง)</div>
+  </div>
+
+  <div class="card">
+    <h2><span class="emoji">➕</span>การทำพหูพจน์ (Plural)</h2>
+    <div class="tbl-wrap"><table style="min-width:420px">
+      <tr><th>กฎ</th><th>เอกพจน์</th><th>พหูพจน์</th></tr>
+      <tr><td>เติม -s ทั่วไป</td><td>book</td><td>books</td></tr>
+      <tr><td>ลงท้าย s,x,ch,sh เติม -es</td><td>box</td><td>boxes</td></tr>
+      <tr><td>ลงท้าย y → ies</td><td>baby</td><td>babies</td></tr>
+      <tr><td>ไม่ปกติ (irregular)</td><td>child / man</td><td>children / men</td></tr>
+    </table></div>
+  </div>
+
+  <div class="card">
+    <h2><span class="emoji">⚡</span>กริยา 3 ช่อง (หัวใจของ Tense)</h2>
+    <p class="sub">กริยาเปลี่ยนรูปตามเวลา — จำชุดนี้ก่อนแล้วใช้ tense ได้สบาย</p>
+    <div class="tbl-wrap"><table style="min-width:480px">
+      <tr><th>ช่อง 1 (ปัจจุบัน)</th><th>ช่อง 2 (อดีต)</th><th>ช่อง 3 (Perfect)</th><th>แปล</th><th>🔊</th></tr>
+      <tr><td>go</td><td>went</td><td>gone</td><td>ไป</td><td><button class="speak sm" onclick="speak('go, went, gone',this)">🔊</button></td></tr>
+      <tr><td>eat</td><td>ate</td><td>eaten</td><td>กิน</td><td><button class="speak sm" onclick="speak('eat, ate, eaten',this)">🔊</button></td></tr>
+      <tr><td>see</td><td>saw</td><td>seen</td><td>เห็น</td><td><button class="speak sm" onclick="speak('see, saw, seen',this)">🔊</button></td></tr>
+      <tr><td>do</td><td>did</td><td>done</td><td>ทำ</td><td><button class="speak sm" onclick="speak('do, did, done',this)">🔊</button></td></tr>
+      <tr><td>have</td><td>had</td><td>had</td><td>มี</td><td><button class="speak sm" onclick="speak('have, had, had',this)">🔊</button></td></tr>
+      <tr><td>take</td><td>took</td><td>taken</td><td>หยิบ/พา</td><td><button class="speak sm" onclick="speak('take, took, taken',this)">🔊</button></td></tr>
+      <tr><td>make</td><td>made</td><td>made</td><td>ทำ/สร้าง</td><td><button class="speak sm" onclick="speak('make, made, made',this)">🔊</button></td></tr>
+      <tr><td>come</td><td>came</td><td>come</td><td>มา</td><td><button class="speak sm" onclick="speak('come, came, come',this)">🔊</button></td></tr>
+    </table></div>
+    <div class="tip">💡 กริยาทั่วไป (regular) แค่เติม -ed: work→worked, play→played. ส่วนด้านบนเป็น irregular ต้องท่อง</div>
+  </div>
+</section>
+<section id="present">
+  <div class="card">
+    <span class="pill">🟢 PRESENT 1/4</span>
+    <h2><span class="emoji">⏱️</span>Present Simple</h2>
+    <p class="sub">ความจริง • นิสัย • กิจวัตรประจำวัน (เกิดซ้ำๆ)</p>
+    <div class="tl"><span class="pastL">อดีต</span><span class="futL">อนาคต</span><div class="axis"></div><div class="now"></div>
+      <div class="m a-blink" style="left:22%;background:var(--green)"></div>
+      <div class="m a-blink" style="left:42%;background:var(--green);animation-delay:.3s"></div>
+      <div class="m a-blink" style="left:62%;background:var(--green);animation-delay:.6s"></div>
+      <div class="m a-blink" style="left:82%;background:var(--green);animation-delay:.9s"></div>
+      <div class="cap">🔁 จุดเขียวกระพริบทั่วเส้น = เกิดเป็นประจำตลอด</div></div>
+    <div class="formula"><span class="chip subj">S</span><span class="chip plus">+</span><span class="chip verb">V1</span><span class="chip plus">(he/she/it เติม s/es)</span></div>
+    <div class="ex aff"><div class="txt"><div class="en">I drink coffee every morning.</div><div class="th">ฉันดื่มกาแฟทุกเช้า</div></div><button class="speak" onclick="speak('I drink coffee every morning.',this)">🔊</button></div>
+    <div class="ex aff"><div class="txt"><div class="en">She works at a bank.</div><div class="th">เธอทำงานที่ธนาคาร (เติม s)</div></div><button class="speak" onclick="speak('She works at a bank.',this)">🔊</button></div>
+    <div class="ex neg"><div class="txt"><div class="en">I do not (don't) eat meat.</div><div class="th">ฉันไม่กินเนื้อ — ปฏิเสธใช้ don't / doesn't</div></div><button class="speak" onclick="speak('I do not eat meat.',this)">🔊</button></div>
+    <div class="ex que"><div class="txt"><div class="en">Do you like tea?</div><div class="th">คุณชอบชาไหม — คำถามขึ้นต้น Do / Does</div></div><button class="speak" onclick="speak('Do you like tea?',this)">🔊</button></div>
+    <div class="tip">⏰ คำสัญญาณ: always, usually, often, sometimes, every day</div>
+  </div>
+
+  <div class="card">
+    <span class="pill">🟢 PRESENT 2/4</span>
+    <h2><span class="emoji">🏃</span>Present Continuous</h2>
+    <p class="sub">สิ่งที่ "กำลังทำอยู่ตอนนี้"</p>
+    <div class="tl"><span class="pastL">อดีต</span><span class="futL">อนาคต</span><div class="axis"></div><div class="now"></div>
+      <div class="m a-run" style="background:var(--sky)"></div>
+      <div class="cap">🏃 จุดวิ่งผ่าน NOW = กำลังเกิดขึ้นเดี๋ยวนี้</div></div>
+    <div class="formula"><span class="chip subj">S</span><span class="chip plus">+</span><span class="chip aux">am/is/are</span><span class="chip plus">+</span><span class="chip verb">V-ing</span></div>
+    <div class="ex aff"><div class="txt"><div class="en">I am studying English now.</div><div class="th">ฉันกำลังเรียนภาษาอังกฤษอยู่ตอนนี้</div></div><button class="speak" onclick="speak('I am studying English now.',this)">🔊</button></div>
+    <div class="ex aff"><div class="txt"><div class="en">They are playing football.</div><div class="th">พวกเขากำลังเล่นฟุตบอล</div></div><button class="speak" onclick="speak('They are playing football.',this)">🔊</button></div>
+    <div class="ex neg"><div class="txt"><div class="en">She is not (isn't) sleeping.</div><div class="th">เธอไม่ได้กำลังนอน</div></div><button class="speak" onclick="speak('She is not sleeping.',this)">🔊</button></div>
+    <div class="ex que"><div class="txt"><div class="en">Are you listening to me?</div><div class="th">คุณกำลังฟังฉันอยู่ไหม</div></div><button class="speak" onclick="speak('Are you listening to me?',this)">🔊</button></div>
+    <div class="tip">⏰ คำสัญญาณ: now, right now, at the moment, Look!, Listen!</div>
+  </div>
+
+  <div class="card">
+    <span class="pill">🟢 PRESENT 3/4</span>
+    <h2><span class="emoji">✅</span>Present Perfect</h2>
+    <p class="sub">เริ่มในอดีต ผลยังเกี่ยวกับปัจจุบัน / เพิ่งทำเสร็จ / ประสบการณ์</p>
+    <div class="tl"><span class="pastL">อดีต</span><span class="futL">อนาคต</span><div class="axis"></div><div class="now"></div>
+      <div class="arrow a-grow" style="left:10%;--w:40%;background:var(--brand);color:var(--brand)"></div>
+      <div class="m" style="left:10%;background:var(--brand)"></div>
+      <div class="cap">⬅️➡️ ลูกศรจากอดีตมาจบที่ NOW = เชื่อมถึงปัจจุบัน</div></div>
+    <div class="formula"><span class="chip subj">S</span><span class="chip plus">+</span><span class="chip aux">have/has</span><span class="chip plus">+</span><span class="chip verb">V3</span></div>
+    <div class="ex aff"><div class="txt"><div class="en">I have finished my homework.</div><div class="th">ฉันทำการบ้านเสร็จแล้ว</div></div><button class="speak" onclick="speak('I have finished my homework.',this)">🔊</button></div>
+    <div class="ex aff"><div class="txt"><div class="en">She has lived here for 5 years.</div><div class="th">เธออยู่ที่นี่มา 5 ปีแล้ว (และยังอยู่)</div></div><button class="speak" onclick="speak('She has lived here for five years.',this)">🔊</button></div>
+    <div class="ex neg"><div class="txt"><div class="en">I have not (haven't) eaten yet.</div><div class="th">ฉันยังไม่ได้กินเลย</div></div><button class="speak" onclick="speak('I have not eaten yet.',this)">🔊</button></div>
+    <div class="ex que"><div class="txt"><div class="en">Have you ever been to Japan?</div><div class="th">คุณเคยไปญี่ปุ่นไหม</div></div><button class="speak" onclick="speak('Have you ever been to Japan?',this)">🔊</button></div>
+    <div class="tip">⏰ คำสัญญาณ: already, just, yet, ever, never, since, for</div>
+  </div>
+
+  <div class="card">
+    <span class="pill">🟢 PRESENT 4/4</span>
+    <h2><span class="emoji">🔄</span>Present Perfect Continuous</h2>
+    <p class="sub">ทำต่อเนื่องจากอดีตจนถึงตอนนี้ (และยังทำอยู่) เน้น "ระยะเวลา"</p>
+    <div class="tl"><span class="pastL">อดีต</span><span class="futL">อนาคต</span><div class="axis"></div><div class="now"></div>
+      <div class="bar a-grow" style="left:14%;--w:36%;background:linear-gradient(90deg,var(--brand2),var(--sky))"></div>
+      <div class="cap">📏 แถบยาวจากอดีตจนถึง NOW = ทำต่อเนื่องมาเรื่อยๆ</div></div>
+    <div class="formula"><span class="chip subj">S</span><span class="chip plus">+</span><span class="chip aux">have/has been</span><span class="chip plus">+</span><span class="chip verb">V-ing</span></div>
+    <div class="ex aff"><div class="txt"><div class="en">I have been working since 9 a.m.</div><div class="th">ฉันทำงานมาตั้งแต่ 9 โมงเช้า (และยังทำอยู่)</div></div><button class="speak" onclick="speak('I have been working since nine a m.',this)">🔊</button></div>
+    <div class="ex aff"><div class="txt"><div class="en">It has been raining for two hours.</div><div class="th">ฝนตกมาสองชั่วโมงแล้ว</div></div><button class="speak" onclick="speak('It has been raining for two hours.',this)">🔊</button></div>
+    <div class="tip">⏰ คำสัญญาณ: for, since, all day, how long</div>
+  </div>
+</section>
+<section id="past">
+  <div class="card">
+    <span class="pill">🟡 PAST 1/4</span>
+    <h2><span class="emoji">⏪</span>Past Simple</h2>
+    <p class="sub">เหตุการณ์ที่จบไปแล้วในอดีต (บอกเวลาชัดเจน)</p>
+    <div class="tl"><span class="pastL">อดีต</span><span class="futL">อนาคต</span><div class="axis"></div><div class="now"></div>
+      <div class="m a-drop" style="left:22%;background:var(--amber)"></div>
+      <div class="cap">⬅️ จุดเดียวทางซ้ายของ NOW = เกิดและจบในอดีต</div></div>
+    <div class="formula"><span class="chip subj">S</span><span class="chip plus">+</span><span class="chip verb">V2 (กริยาช่อง 2)</span></div>
+    <div class="ex aff"><div class="txt"><div class="en">I went to Chiang Mai last year.</div><div class="th">ฉันไปเชียงใหม่เมื่อปีที่แล้ว</div></div><button class="speak" onclick="speak('I went to Chiang Mai last year.',this)">🔊</button></div>
+    <div class="ex aff"><div class="txt"><div class="en">She watched a movie yesterday.</div><div class="th">เธอดูหนังเมื่อวาน (watch→watched)</div></div><button class="speak" onclick="speak('She watched a movie yesterday.',this)">🔊</button></div>
+    <div class="ex neg"><div class="txt"><div class="en">I did not (didn't) go to work.</div><div class="th">ฉันไม่ได้ไปทำงาน — ปฏิเสธใช้ didn't + V1</div></div><button class="speak" onclick="speak('I did not go to work.',this)">🔊</button></div>
+    <div class="ex que"><div class="txt"><div class="en">Did you sleep well?</div><div class="th">คุณนอนหลับสบายดีไหม — คำถามขึ้น Did + V1</div></div><button class="speak" onclick="speak('Did you sleep well?',this)">🔊</button></div>
+    <div class="tip">⏰ คำสัญญาณ: yesterday, last week, ago, in 2010</div>
+  </div>
+
+  <div class="card">
+    <span class="pill">🟡 PAST 2/4</span>
+    <h2><span class="emoji">🎞️</span>Past Continuous</h2>
+    <p class="sub">กำลังทำอยู่ ณ จุดเวลาหนึ่งในอดีต</p>
+    <div class="tl"><span class="pastL">อดีต</span><span class="futL">อนาคต</span><div class="axis"></div><div class="now"></div>
+      <div class="m a-runPast" style="background:var(--amber)"></div>
+      <div class="cap">🔁 จุดวิ่งอยู่ในเขตอดีต = กำลังทำในอดีต</div></div>
+    <div class="formula"><span class="chip subj">S</span><span class="chip plus">+</span><span class="chip aux">was/were</span><span class="chip plus">+</span><span class="chip verb">V-ing</span></div>
+    <div class="ex aff"><div class="txt"><div class="en">I was sleeping at 10 p.m.</div><div class="th">ฉันกำลังนอนตอน 4 ทุ่ม</div></div><button class="speak" onclick="speak('I was sleeping at ten p m.',this)">🔊</button></div>
+    <div class="ex aff"><div class="txt"><div class="en">They were cooking when I arrived.</div><div class="th">พวกเขากำลังทำอาหารตอนที่ฉันมาถึง</div></div><button class="speak" onclick="speak('They were cooking when I arrived.',this)">🔊</button></div>
+    <div class="ex que"><div class="txt"><div class="en">What were you doing last night?</div><div class="th">เมื่อคืนคุณกำลังทำอะไรอยู่</div></div><button class="speak" onclick="speak('What were you doing last night?',this)">🔊</button></div>
+    <div class="tip">💡 มักใช้คู่ Past Simple: "กำลังทำ A อยู่ (was/were+ing) ตอนที่ B เกิด (V2)"</div>
+  </div>
+
+  <div class="card">
+    <span class="pill">🟡 PAST 3/4</span>
+    <h2><span class="emoji">⏮️</span>Past Perfect</h2>
+    <p class="sub">เหตุการณ์ที่เกิด "ก่อน" อีกเหตุการณ์ในอดีต</p>
+    <div class="tl"><span class="pastL">อดีต</span><span class="futL">อนาคต</span><div class="axis"></div><div class="now"></div>
+      <div class="m a-drop" style="left:18%;background:#7c3aed"></div>
+      <div class="m a-drop" style="left:38%;background:var(--amber);animation-delay:.6s"></div>
+      <div class="cap">1️⃣ม่วง(had+V3) เกิดก่อน → 2️⃣เหลือง(V2) เกิดทีหลัง</div></div>
+    <div class="formula"><span class="chip subj">S</span><span class="chip plus">+</span><span class="chip aux">had</span><span class="chip plus">+</span><span class="chip verb">V3</span></div>
+    <div class="ex aff"><div class="txt"><div class="en">The train had left before I arrived.</div><div class="th">รถไฟออกไปแล้ว ก่อนที่ฉันจะมาถึง</div></div><button class="speak" onclick="speak('The train had left before I arrived.',this)">🔊</button></div>
+    <div class="ex aff"><div class="txt"><div class="en">She had eaten before the meeting.</div><div class="th">เธอกินข้าวมาก่อนแล้วก่อนประชุม</div></div><button class="speak" onclick="speak('She had eaten before the meeting.',this)">🔊</button></div>
+    <div class="tip">💡 had + V3 = เกิดก่อน, V2 = เกิดทีหลัง</div>
+  </div>
+
+  <div class="card">
+    <span class="pill">🟡 PAST 4/4</span>
+    <h2><span class="emoji">⏳</span>Past Perfect Continuous</h2>
+    <p class="sub">ทำต่อเนื่องมาเรื่อยๆ จนถึงจุดหนึ่งในอดีต</p>
+    <div class="tl"><span class="pastL">อดีต</span><span class="futL">อนาคต</span><div class="axis"></div><div class="now"></div>
+      <div class="bar a-grow" style="left:12%;--w:26%;background:linear-gradient(90deg,#a78bfa,var(--amber))"></div>
+      <div class="cap">📏 แถบยาวในอดีต = ทำต่อเนื่องก่อนถึงเหตุการณ์อื่น</div></div>
+    <div class="formula"><span class="chip subj">S</span><span class="chip plus">+</span><span class="chip aux">had been</span><span class="chip plus">+</span><span class="chip verb">V-ing</span></div>
+    <div class="ex aff"><div class="txt"><div class="en">I had been waiting for an hour when she came.</div><div class="th">ฉันรอมาหนึ่งชั่วโมงแล้วตอนที่เธอมา</div></div><button class="speak" onclick="speak('I had been waiting for an hour when she came.',this)">🔊</button></div>
+    <div class="tip">⏰ คำสัญญาณ: for, since, before, when</div>
+  </div>
+</section>
+<section id="future">
+  <div class="card">
+    <span class="pill">🔵 FUTURE 1/4</span>
+    <h2><span class="emoji">⏩</span>Future Simple</h2>
+    <p class="sub">จะทำในอนาคต • ตัดสินใจทันที • คำสัญญา • พยากรณ์</p>
+    <div class="tl"><span class="pastL">อดีต</span><span class="futL">อนาคต</span><div class="axis"></div><div class="now"></div>
+      <div class="m a-drop" style="left:80%;background:var(--sky)"></div>
+      <div class="cap">➡️ จุดทางขวาของ NOW = ยังไม่เกิด จะเกิดข้างหน้า</div></div>
+    <div class="formula"><span class="chip subj">S</span><span class="chip plus">+</span><span class="chip aux">will</span><span class="chip plus">+</span><span class="chip verb">V1</span></div>
+    <div class="ex aff"><div class="txt"><div class="en">I will call you tomorrow.</div><div class="th">ฉันจะโทรหาคุณพรุ่งนี้</div></div><button class="speak" onclick="speak('I will call you tomorrow.',this)">🔊</button></div>
+    <div class="ex aff"><div class="txt"><div class="en">It will rain tonight.</div><div class="th">คืนนี้ฝนจะตก</div></div><button class="speak" onclick="speak('It will rain tonight.',this)">🔊</button></div>
+    <div class="ex neg"><div class="txt"><div class="en">I will not (won't) be late.</div><div class="th">ฉันจะไม่สาย</div></div><button class="speak" onclick="speak('I will not be late.',this)">🔊</button></div>
+    <div class="ex que"><div class="txt"><div class="en">Will you help me?</div><div class="th">คุณจะช่วยฉันไหม</div></div><button class="speak" onclick="speak('Will you help me?',this)">🔊</button></div>
+    <div class="tip">⏰ คำสัญญาณ: tomorrow, next week, soon, later. *มีแผนล่วงหน้าใช้ "be going to" ได้ เช่น I am going to travel.</div>
+  </div>
+
+  <div class="card">
+    <span class="pill">🔵 FUTURE 2/4</span>
+    <h2><span class="emoji">🛫</span>Future Continuous</h2>
+    <p class="sub">จะกำลังทำอยู่ ณ จุดเวลาหนึ่งในอนาคต</p>
+    <div class="tl"><span class="pastL">อดีต</span><span class="futL">อนาคต</span><div class="axis"></div><div class="now"></div>
+      <div class="m a-runFut" style="background:var(--sky)"></div>
+      <div class="cap">🔁 จุดวิ่งในเขตอนาคต = กำลังทำในอนาคต</div></div>
+    <div class="formula"><span class="chip subj">S</span><span class="chip plus">+</span><span class="chip aux">will be</span><span class="chip plus">+</span><span class="chip verb">V-ing</span></div>
+    <div class="ex aff"><div class="txt"><div class="en">This time tomorrow, I will be flying to Japan.</div><div class="th">เวลานี้พรุ่งนี้ ฉันจะกำลังบินไปญี่ปุ่น</div></div><button class="speak" onclick="speak('This time tomorrow, I will be flying to Japan.',this)">🔊</button></div>
+    <div class="ex aff"><div class="txt"><div class="en">At 8 p.m. we will be having dinner.</div><div class="th">ตอน 2 ทุ่ม เราจะกำลังกินมื้อค่ำ</div></div><button class="speak" onclick="speak('At eight p m we will be having dinner.',this)">🔊</button></div>
+  </div>
+
+  <div class="card">
+    <span class="pill">🔵 FUTURE 3/4</span>
+    <h2><span class="emoji">🏁</span>Future Perfect</h2>
+    <p class="sub">จะทำเสร็จ "ก่อน" เวลาหนึ่งในอนาคต</p>
+    <div class="tl"><span class="pastL">อดีต</span><span class="futL">อนาคต</span><div class="axis"></div><div class="now"></div>
+      <div class="arrow a-grow" style="left:56%;--w:30%;background:var(--sky);color:var(--sky)"></div>
+      <div class="m a-drop" style="left:86%;background:var(--green);animation-delay:1s"></div>
+      <div class="cap">➡️🏁 ทำจนเสร็จก่อนถึงเส้นชัย(จุดเขียว)ในอนาคต</div></div>
+    <div class="formula"><span class="chip subj">S</span><span class="chip plus">+</span><span class="chip aux">will have</span><span class="chip plus">+</span><span class="chip verb">V3</span></div>
+    <div class="ex aff"><div class="txt"><div class="en">I will have finished the report by Friday.</div><div class="th">ฉันจะทำรายงานเสร็จก่อนวันศุกร์</div></div><button class="speak" onclick="speak('I will have finished the report by Friday.',this)">🔊</button></div>
+    <div class="tip">⏰ คำสัญญาณ: by + เวลา (by 2030, by next month)</div>
+  </div>
+
+  <div class="card">
+    <span class="pill">🔵 FUTURE 4/4</span>
+    <h2><span class="emoji">🔭</span>Future Perfect Continuous</h2>
+    <p class="sub">จะทำต่อเนื่องมาเรื่อยๆ จนถึงจุดหนึ่งในอนาคต เน้นระยะเวลา</p>
+    <div class="tl"><span class="pastL">อดีต</span><span class="futL">อนาคต</span><div class="axis"></div><div class="now"></div>
+      <div class="bar a-grow" style="left:52%;--w:34%;background:linear-gradient(90deg,var(--sky),var(--green))"></div>
+      <div class="cap">📏 แถบยาวในอนาคต = ทำต่อเนื่องจนถึงจุดนั้น</div></div>
+    <div class="formula"><span class="chip subj">S</span><span class="chip plus">+</span><span class="chip aux">will have been</span><span class="chip plus">+</span><span class="chip verb">V-ing</span></div>
+    <div class="ex aff"><div class="txt"><div class="en">By next year, I will have been working here for 10 years.</div><div class="th">พอถึงปีหน้า ฉันจะทำงานที่นี่ครบ 10 ปี (ต่อเนื่อง)</div></div><button class="speak" onclick="speak('By next year, I will have been working here for ten years.',this)">🔊</button></div>
+    <div class="tip">⏰ คำสัญญาณ: by then, for + ระยะเวลา</div>
+  </div>
+</section>
+<section id="more">
+  <div class="card">
+    <h2><span class="emoji">🛠️</span>Modal Verbs (กริยาช่วย)</h2>
+    <p class="sub">วางหน้า V1 เสมอ เพื่อบอกความสามารถ/อนุญาต/ความน่าจะเป็น</p>
+    <div class="tbl-wrap"><table style="min-width:560px">
+      <tr><th>Modal</th><th>ความหมาย</th><th>ตัวอย่าง</th><th>🔊</th></tr>
+      <tr><td>can</td><td>สามารถ / ทำได้</td><td>I can swim.</td><td><button class="speak sm" onclick="speak('I can swim.',this)">🔊</button></td></tr>
+      <tr><td>could</td><td>ทำได้(อดีต) / สุภาพ</td><td>Could you help me?</td><td><button class="speak sm" onclick="speak('Could you help me?',this)">🔊</button></td></tr>
+      <tr><td>will</td><td>จะ</td><td>I will try.</td><td><button class="speak sm" onclick="speak('I will try.',this)">🔊</button></td></tr>
+      <tr><td>would</td><td>จะ(สุภาพ) / สมมติ</td><td>I would like coffee.</td><td><button class="speak sm" onclick="speak('I would like coffee.',this)">🔊</button></td></tr>
+      <tr><td>should</td><td>ควรจะ</td><td>You should rest.</td><td><button class="speak sm" onclick="speak('You should rest.',this)">🔊</button></td></tr>
+      <tr><td>must</td><td>ต้อง (จำเป็น)</td><td>You must stop.</td><td><button class="speak sm" onclick="speak('You must stop.',this)">🔊</button></td></tr>
+      <tr><td>may / might</td><td>อาจจะ</td><td>It may rain.</td><td><button class="speak sm" onclick="speak('It may rain.',this)">🔊</button></td></tr>
+      <tr><td>have to</td><td>ต้อง</td><td>I have to go.</td><td><button class="speak sm" onclick="speak('I have to go.',this)">🔊</button></td></tr>
+    </table></div>
+    <div class="tip">💡 หลัง modal ใช้กริยาช่อง 1 เปล่าๆ เสมอ (ไม่เติม s, ไม่เติม ed) เช่น She can <b>go</b> ไม่ใช่ goes</div>
+  </div>
+
+  <div class="card">
+    <h2><span class="emoji">❓</span>การตั้งคำถาม (Questions)</h2>
+    <h4>Yes/No Questions — เอากริยาช่วยขึ้นหน้า</h4>
+    <div class="ex que"><div class="txt"><div class="en">Are you ready?</div><div class="th">คุณพร้อมไหม</div></div><button class="speak" onclick="speak('Are you ready?',this)">🔊</button></div>
+    <div class="ex que"><div class="txt"><div class="en">Do you speak English?</div><div class="th">คุณพูดภาษาอังกฤษไหม</div></div><button class="speak" onclick="speak('Do you speak English?',this)">🔊</button></div>
+    <h4>WH-Questions — คำถามที่ต้องการคำตอบ</h4>
+    <div class="grid2">
+      <div class="pcard"><b>What</b> อะไร — What is this?<button class="speak sm" style="float:right" onclick="speak('What is this?',this)">🔊</button></div>
+      <div class="pcard"><b>Where</b> ที่ไหน — Where are you?<button class="speak sm" style="float:right" onclick="speak('Where are you?',this)">🔊</button></div>
+      <div class="pcard"><b>When</b> เมื่อไหร่ — When do we start?<button class="speak sm" style="float:right" onclick="speak('When do we start?',this)">🔊</button></div>
+      <div class="pcard"><b>Who</b> ใคร — Who is he?<button class="speak sm" style="float:right" onclick="speak('Who is he?',this)">🔊</button></div>
+      <div class="pcard"><b>Why</b> ทำไม — Why are you sad?<button class="speak sm" style="float:right" onclick="speak('Why are you sad?',this)">🔊</button></div>
+      <div class="pcard"><b>How</b> อย่างไร — How are you?<button class="speak sm" style="float:right" onclick="speak('How are you?',this)">🔊</button></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2><span class="emoji">📊</span>การเปรียบเทียบ (Comparison)</h2>
+    <div class="tbl-wrap"><table style="min-width:520px">
+      <tr><th>ระดับ</th><th>คำสั้น (+er/est)</th><th>คำยาว (more/most)</th></tr>
+      <tr><td>ปกติ</td><td>tall (สูง)</td><td>beautiful (สวย)</td></tr>
+      <tr><td>กว่า (-er/more)</td><td>tall<b>er</b> than</td><td><b>more</b> beautiful than</td></tr>
+      <tr><td>ที่สุด (-est/most)</td><td>the tall<b>est</b></td><td>the <b>most</b> beautiful</td></tr>
+    </table></div>
+    <div class="ex aff"><div class="txt"><div class="en">He is taller than me.</div><div class="th">เขาสูงกว่าฉัน</div></div><button class="speak" onclick="speak('He is taller than me.',this)">🔊</button></div>
+    <div class="ex aff"><div class="txt"><div class="en">This is the most beautiful place.</div><div class="th">นี่คือที่ที่สวยที่สุด</div></div><button class="speak" onclick="speak('This is the most beautiful place.',this)">🔊</button></div>
+    <div class="warn">⚠️ คำพิเศษ: good→better→best | bad→worse→worst</div>
+  </div>
+
+  <div class="card">
+    <h2><span class="emoji">📍</span>บุพบทบอกตำแหน่ง/เวลา (Prepositions)</h2>
+    <div class="grid3">
+      <div class="pcard"><b>in</b> ใน — in the box / in May<button class="speak sm" style="float:right" onclick="speak('in the box',this)">🔊</button></div>
+      <div class="pcard"><b>on</b> บน — on the table / on Monday<button class="speak sm" style="float:right" onclick="speak('on the table',this)">🔊</button></div>
+      <div class="pcard"><b>at</b> ที่ — at home / at 5 p.m.<button class="speak sm" style="float:right" onclick="speak('at home',this)">🔊</button></div>
+      <div class="pcard"><b>under</b> ใต้ — under the chair<button class="speak sm" style="float:right" onclick="speak('under the chair',this)">🔊</button></div>
+      <div class="pcard"><b>next to</b> ข้างๆ — next to the bank<button class="speak sm" style="float:right" onclick="speak('next to the bank',this)">🔊</button></div>
+      <div class="pcard"><b>between</b> ระหว่าง — between A and B<button class="speak sm" style="float:right" onclick="speak('between A and B',this)">🔊</button></div>
+    </div>
+    <div class="tip">💡 เวลา: in (เดือน/ปี) • on (วัน/วันที่) • at (เวลานาฬิกา)</div>
+  </div>
+</section>
+<section id="talk">
+  <div class="card">
+    <h2><span class="emoji">👋</span>ทักทาย & แนะนำตัว</h2>
+    <div class="ex aff"><div class="txt"><div class="en">Hello! How are you?</div><div class="th">สวัสดี! สบายดีไหม</div></div><button class="speak" onclick="speak('Hello! How are you?',this)">🔊</button></div>
+    <div class="ex aff"><div class="txt"><div class="en">I'm fine, thank you. And you?</div><div class="th">สบายดี ขอบคุณ แล้วคุณล่ะ</div></div><button class="speak" onclick="speak('I am fine, thank you. And you?',this)">🔊</button></div>
+    <div class="ex aff"><div class="txt"><div class="en">My name is John. Nice to meet you.</div><div class="th">ผมชื่อจอห์น ยินดีที่ได้รู้จัก</div></div><button class="speak" onclick="speak('My name is John. Nice to meet you.',this)">🔊</button></div>
+    <div class="ex aff"><div class="txt"><div class="en">Where are you from?</div><div class="th">คุณมาจากไหน</div></div><button class="speak" onclick="speak('Where are you from?',this)">🔊</button></div>
+    <div class="ex aff"><div class="txt"><div class="en">I'm from Thailand.</div><div class="th">ฉันมาจากประเทศไทย</div></div><button class="speak" onclick="speak('I am from Thailand.',this)">🔊</button></div>
+  </div>
+
+  <div class="card">
+    <h2><span class="emoji">🍜</span>ที่ร้านอาหาร</h2>
+    <div class="ex aff"><div class="txt"><div class="en">A table for two, please.</div><div class="th">ขอโต๊ะสำหรับสองคนครับ</div></div><button class="speak" onclick="speak('A table for two, please.',this)">🔊</button></div>
+    <div class="ex aff"><div class="txt"><div class="en">Can I see the menu, please?</div><div class="th">ขอดูเมนูหน่อยได้ไหม</div></div><button class="speak" onclick="speak('Can I see the menu, please?',this)">🔊</button></div>
+    <div class="ex aff"><div class="txt"><div class="en">I would like fried rice.</div><div class="th">ฉันขอข้าวผัด</div></div><button class="speak" onclick="speak('I would like fried rice.',this)">🔊</button></div>
+    <div class="ex aff"><div class="txt"><div class="en">How much is it?</div><div class="th">ราคาเท่าไหร่</div></div><button class="speak" onclick="speak('How much is it?',this)">🔊</button></div>
+    <div class="ex aff"><div class="txt"><div class="en">Can I have the bill, please?</div><div class="th">ขอเช็คบิลหน่อย</div></div><button class="speak" onclick="speak('Can I have the bill, please?',this)">🔊</button></div>
+  </div>
+
+  <div class="card">
+    <h2><span class="emoji">🧭</span>ถามทาง</h2>
+    <div class="ex aff"><div class="txt"><div class="en">Excuse me, where is the toilet?</div><div class="th">ขอโทษนะ ห้องน้ำอยู่ไหน</div></div><button class="speak" onclick="speak('Excuse me, where is the toilet?',this)">🔊</button></div>
+    <div class="ex aff"><div class="txt"><div class="en">How do I get to the station?</div><div class="th">ไปสถานีรถไฟยังไง</div></div><button class="speak" onclick="speak('How do I get to the station?',this)">🔊</button></div>
+    <div class="ex aff"><div class="txt"><div class="en">Go straight and turn left.</div><div class="th">ตรงไปแล้วเลี้ยวซ้าย</div></div><button class="speak" onclick="speak('Go straight and turn left.',this)">🔊</button></div>
+    <div class="ex aff"><div class="txt"><div class="en">Is it far from here?</div><div class="th">ไกลจากที่นี่ไหม</div></div><button class="speak" onclick="speak('Is it far from here?',this)">🔊</button></div>
+  </div>
+
+  <div class="card">
+    <h2><span class="emoji">🛍️</span>ช้อปปิ้ง</h2>
+    <div class="ex aff"><div class="txt"><div class="en">How much does this cost?</div><div class="th">อันนี้ราคาเท่าไหร่</div></div><button class="speak" onclick="speak('How much does this cost?',this)">🔊</button></div>
+    <div class="ex aff"><div class="txt"><div class="en">Do you have a smaller size?</div><div class="th">มีไซส์เล็กกว่านี้ไหม</div></div><button class="speak" onclick="speak('Do you have a smaller size?',this)">🔊</button></div>
+    <div class="ex aff"><div class="txt"><div class="en">Can I pay by card?</div><div class="th">จ่ายด้วยบัตรได้ไหม</div></div><button class="speak" onclick="speak('Can I pay by card?',this)">🔊</button></div>
+    <div class="ex aff"><div class="txt"><div class="en">That's too expensive.</div><div class="th">แพงเกินไป</div></div><button class="speak" onclick="speak('That is too expensive.',this)">🔊</button></div>
+  </div>
+
+  <div class="card">
+    <h2><span class="emoji">🆘</span>วลีช่วยชีวิต (เมื่อฟังไม่ทัน)</h2>
+    <div class="grid2">
+      <div class="ex aff"><div class="txt"><div class="en">Sorry, I don't understand.</div><div class="th">ขอโทษ ฉันไม่เข้าใจ</div></div><button class="speak" onclick="speak('Sorry, I do not understand.',this)">🔊</button></div>
+      <div class="ex aff"><div class="txt"><div class="en">Can you speak slowly, please?</div><div class="th">พูดช้าๆ ได้ไหม</div></div><button class="speak" onclick="speak('Can you speak slowly, please?',this)">🔊</button></div>
+      <div class="ex aff"><div class="txt"><div class="en">Could you repeat that?</div><div class="th">พูดอีกครั้งได้ไหม</div></div><button class="speak" onclick="speak('Could you repeat that?',this)">🔊</button></div>
+      <div class="ex aff"><div class="txt"><div class="en">What does this mean?</div><div class="th">อันนี้แปลว่าอะไร</div></div><button class="speak" onclick="speak('What does this mean?',this)">🔊</button></div>
+    </div>
+    <div class="ok">🎯 เคล็ดลับพูดได้: ท่อง 3 วลีนี้ให้ขึ้นใจก่อน แล้วฝึกพูดตามปุ่มเสียงทุกวัน วันละ 10 นาที</div>
+  </div>
+</section>
+<section id="dict">
+  <div class="card">
+    <h2><span class="emoji">📖</span>ค้นหาคำศัพท์ออนไลน์</h2>
+    <p class="sub">พิมพ์คำศัพท์ → ดึงความหมาย ตัวอย่างประโยค และเสียงอ่านจริงจากอินเทอร์เน็ต 🌐</p>
+    <div class="search">
+      <input id="word" type="text" placeholder="พิมพ์คำศัพท์ เช่น happy, study, beautiful..." onkeydown="if(event.key==='Enter')lookup()" />
+      <button class="btn" onclick="lookup()">🔍 ค้นหา</button>
+    </div>
+    <div style="margin-bottom:12px"><span class="net">ลองคำเหล่านี้:</span>
+      <span class="wchip" onclick="quick('beautiful')">beautiful</span>
+      <span class="wchip" onclick="quick('study')">study</span>
+      <span class="wchip" onclick="quick('happy')">happy</span>
+      <span class="wchip" onclick="quick('travel')">travel</span>
+      <span class="wchip" onclick="quick('friend')">friend</span>
+    </div>
+    <div id="dictResult" class="result">👆 พิมพ์คำศัพท์แล้วกดค้นหา ผลลัพธ์จะแสดงที่นี่</div>
+    <p class="net">ℹ️ ข้อมูลจาก Free Dictionary API (dictionaryapi.dev) — ต้องต่ออินเทอร์เน็ต หากค้นไม่ได้ ระบบจะใช้เสียงอ่านในตัวแทน</p>
+  </div>
+</section>
+<section id="vocab">
+  <div class="card">
+    <h2><span class="emoji">🎯</span>เกมสุ่มคำศัพท์ใช้บ่อย</h2>
+    <p class="sub">สุ่มคำขึ้นมา → เลือกคำแปลไทยที่ถูก → ตอบถูกจะโชว์ตัวอย่างประโยคจริง พร้อมเสียงอ่านและคำแปล</p>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px">
+      <button id="modeOff" class="btn ghost" style="flex:1;min-width:150px" onclick="setMode('off')">📦 196 คำคัดสรร (ออฟไลน์)</button>
+      <button id="modeOn" class="btn" style="flex:1;min-width:150px" onclick="setMode('on')">🌐 5,000 คำใช้บ่อย (ออนไลน์)</button>
+    </div>
+    <div id="vpoolStatus" class="net" style="text-align:center;margin-bottom:10px"></div>
+    <div id="lvVocab" class="lvbar"></div>
+    <div class="vstat">
+      <div class="box"><b id="vScore">0</b><span>ตอบถูก</span></div>
+      <div class="box"><b id="vTotal">0</b><span>ทั้งหมด</span></div>
+      <div class="box"><b id="vStreak">0</b><span>ตอบถูกติด</span></div>
+      <div class="box"><b id="vBest">0</b><span>สถิติสูงสุด</span></div>
+    </div>
+    <div id="vword" class="vword"></div>
+    <p class="note" style="text-align:center">เลือกคำแปลที่ถูกต้อง 👇</p>
+    <div id="vopts" class="vopts"></div>
+    <div id="vctx" class="vctx"></div>
+    <div style="text-align:center;margin-top:16px">
+      <button id="vnext" class="btn" style="display:none" onclick="nextWord()">➡️ คำถัดไป</button>
+    </div>
+    <p class="net" style="text-align:center;margin-top:14px">📚 <b>ออฟไลน์</b> = 196 คำคัดสรร แปลไทยตรวจมือ (ใช้ได้ไม่ต้องเน็ต) • <b>ออนไลน์</b> = สุ่มจาก 5,000 คำใช้บ่อยจริง ดึงคำแปล/ตัวอย่างสดจากอินเทอร์เน็ต<br>⚠️ โหมดออนไลน์ใช้บริการแปลอัตโนมัติ คำแปลอาจไม่เป๊ะ 100% และต้องต่ออินเทอร์เน็ต</p>
+  </div>
+</section>
+<section id="listen">
+  <div class="card">
+    <h2><span class="emoji">🎧</span>เกมฟังเสียง → เลือกคำที่ได้ยิน</h2>
+    <p class="sub">กดฟังเสียงคำศัพท์ → เลือกคำภาษาอังกฤษที่ถูกต้อง → ตอบถูกจะเฉลยคำแปลและตัวอย่างประโยค ระบบจะปรับระดับความยากตามผลของคุณ</p>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px">
+      <button id="lmodeOff" class="btn ghost" style="flex:1;min-width:150px" onclick="setLMode('off')">📦 196 คำคัดสรร (ออฟไลน์)</button>
+      <button id="lmodeOn" class="btn" style="flex:1;min-width:150px" onclick="setLMode('on')">🌐 5,000 คำใช้บ่อย (ออนไลน์)</button>
+    </div>
+    <div id="lpoolStatus" class="net" style="text-align:center;margin-bottom:10px"></div>
+    <div id="lvListen" class="lvbar"></div>
+    <div class="vstat">
+      <div class="box"><b id="lScore">0</b><span>ตอบถูก</span></div>
+      <div class="box"><b id="lTotal">0</b><span>ทั้งหมด</span></div>
+      <div class="box"><b id="lStreak">0</b><span>ตอบถูกติด</span></div>
+      <div class="box"><b id="lBest">0</b><span>สถิติสูงสุด</span></div>
+    </div>
+    <div class="vword" style="padding:30px 10px">
+      <button id="lbigplay" class="speak" style="width:78px;height:78px;font-size:34px;margin:0 auto" onclick="replayListen()">🔊</button>
+      <div class="pos" style="margin-top:12px">กดเพื่อฟังอีกครั้ง — แล้วเลือกคำที่ได้ยิน</div>
+    </div>
+    <p class="note" style="text-align:center">ได้ยินว่าอะไร? เลือกคำที่ถูกต้อง 👇</p>
+    <div id="lopts" class="vopts"></div>
+    <div id="lctx" class="vctx"></div>
+    <div style="text-align:center;margin-top:16px">
+      <button id="lnext" class="btn" style="display:none" onclick="nextListen()">➡️ คำถัดไป</button>
+    </div>
+    <p class="net" style="text-align:center;margin-top:14px">🎯 ระบบไต่ระดับเดียวกับเกมคำศัพท์ — ตอบถูกต่อเนื่องจะเลื่อนขึ้นคำที่ยากขึ้น ตอบผิดบ่อยจะลดระดับลงให้เหมาะกับคุณ</p>
+  </div>
+</section>
+<section id="quiz">
+  <div class="card">
+    <h2><span class="emoji">🎮</span>แบบฝึกหัด Tense (8 ข้อ)</h2>
+    <p class="sub">เลือกคำตอบที่ถูกต้อง — กดฟังเสียงโจทย์ได้ 🔊 ตอบผิดมีคำใบ้ให้</p>
+    <div id="quizBox"></div>
+    <button class="btn ghost" style="width:100%;margin-top:6px" onclick="resetQuiz()">🔄 เริ่มทำใหม่</button>
+    <div id="score" class="score"></div>
+  </div>
+</section>
+</main>
+
+<footer>📚 คอร์สภาษาอังกฤษพื้นฐานสู่การพูดได้ • สร้างเพื่อผู้เริ่มต้นชาวไทย<br>Powered by Copilot Cowork</footer>
+
+<script>
+/* ---------- TABS ---------- */
+document.getElementById('nav').addEventListener('click',e=>{
+  if(e.target.tagName!=='BUTTON')return;
+  document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
+  e.target.classList.add('active');
+  const t=e.target.dataset.t;
+  document.querySelectorAll('section').forEach(s=>s.classList.remove('show'));
+  document.getElementById(t).classList.add('show');
+  if(t==='vocab'&&vIdx===-1)initVocab();
+  if(t==='listen'&&lIdx===-1)initListen();
+  if(t==='quiz'&&!document.getElementById('quizBox').children.length)buildQuiz();
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+
+/* ---------- TEXT TO SPEECH ---------- */
+let voices=[];
+function loadVoices(){voices=window.speechSynthesis?speechSynthesis.getVoices():[];}
+if('speechSynthesis' in window){loadVoices();speechSynthesis.onvoiceschanged=loadVoices;}
+function speak(text,btn){
+  if(!('speechSynthesis' in window)){alert('เบราว์เซอร์นี้ไม่รองรับเสียงอ่าน ลองใช้ Chrome หรือ Edge');return;}
+  speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(text);
+  u.lang='en-US';u.rate=.85;u.pitch=1;
+  const en=voices.find(v=>v.lang&&v.lang.startsWith('en'));if(en)u.voice=en;
+  if(btn){btn.classList.add('playing');u.onend=()=>btn.classList.remove('playing');u.onerror=()=>btn.classList.remove('playing');}
+  speechSynthesis.speak(u);
+}
+
+/* ---------- DICTIONARY ---------- */
+function quick(w){document.getElementById('word').value=w;lookup();}
+async function lookup(){
+  const w=document.getElementById('word').value.trim().toLowerCase();
+  const box=document.getElementById('dictResult');
+  if(!w){box.innerHTML='⚠️ กรุณาพิมพ์คำศัพท์ก่อน';return;}
+  box.innerHTML='<div class="spinner"></div><p style="text-align:center;color:var(--muted)">กำลังค้นหา "'+w+'" จากอินเทอร์เน็ต...</p>';
+  try{
+    const res=await fetch('https://api.dictionaryapi.dev/api/v2/entries/en/'+encodeURIComponent(w));
+    if(!res.ok)throw new Error('nf');
+    const data=await res.json();const e=data[0];
+    let phon=e.phonetic||'';if(!phon&&e.phonetics){const p=e.phonetics.find(x=>x.text);if(p)phon=p.text;}
+    let audioUrl='';if(e.phonetics){const a=e.phonetics.find(x=>x.audio);if(a)audioUrl=a.audio;}
+    let html='<div class="word">'+e.word+'<span class="phon">'+phon+'</span> '+
+      '<button class="speak sm" style="vertical-align:middle" onclick="playWord(\''+e.word.replace(/'/g,"")+'\',\''+audioUrl+'\',this)">🔊</button></div>';
+    e.meanings.slice(0,3).forEach(m=>{
+      html+='<div class="pos">'+m.partOfSpeech+'</div>';
+      m.definitions.slice(0,2).forEach(d=>{
+        html+='<div style="margin:4px 0 8px"><b>•</b> '+d.definition+'</div>';
+        if(d.example)html+='<div style="color:var(--muted);font-style:italic;margin-bottom:6px">ตัวอย่าง: "'+d.example+'"</div>';
+      });
+    });
+    box.innerHTML=html;
+  }catch(err){
+    box.innerHTML='<div class="word">'+w+' <button class="speak sm" style="vertical-align:middle" onclick="speak(\''+w+'\',this)">🔊</button></div>'+
+      '<p style="margin-top:10px;color:var(--muted)">❌ ไม่พบคำนี้ออนไลน์ หรือเชื่อมต่ออินเทอร์เน็ตไม่ได้ — แต่ยังกดฟังเสียงอ่านในตัวได้ 🔊</p>';
+  }
+}
+function playWord(word,url,btn){
+  if(url){try{const a=new Audio(url);btn.classList.add('playing');a.onended=()=>btn.classList.remove('playing');a.onerror=()=>{btn.classList.remove('playing');speak(word,btn);};a.play();return;}catch(e){}}
+  speak(word,btn);
+}
+
+/* ---------- TENSE QUIZ ---------- */
+const quizData=[
+  {q:"I ___ to school every day.",audio:"I go to school every day.",opts:["go","went","will go"],a:0,hint:"every day = Present Simple"},
+  {q:"She ___ a book yesterday.",audio:"She read a book yesterday.",opts:["reads","read","is reading"],a:1,hint:"yesterday = Past Simple"},
+  {q:"Look! They ___ football now.",audio:"They are playing football now.",opts:["play","played","are playing"],a:2,hint:"now / Look! = Present Continuous"},
+  {q:"I ___ you tomorrow.",audio:"I will call you tomorrow.",opts:["call","will call","called"],a:1,hint:"tomorrow = Future Simple"},
+  {q:"I have ___ my homework already.",audio:"I have finished my homework already.",opts:["finish","finished","finishing"],a:1,hint:"have + V3 = Present Perfect"},
+  {q:"While I ___, the phone rang.",audio:"While I was cooking, the phone rang.",opts:["cook","was cooking","cooked"],a:1,hint:"กำลังทำในอดีต = Past Continuous"},
+  {q:"By 2030 I ___ here for ten years.",audio:"By 2030 I will have worked here for ten years.",opts:["work","worked","will have worked"],a:2,hint:"by + อนาคต = Future Perfect"},
+  {q:"He ___ never been to Japan.",audio:"He has never been to Japan.",opts:["has","have","had"],a:0,hint:"he/she/it ใช้ has"}
+];
+let answered=0,correct=0;
+function buildQuiz(){
+  answered=0;correct=0;const box=document.getElementById('quizBox');
+  document.getElementById('score').style.display='none';box.innerHTML='';
+  quizData.forEach((item,i)=>{
+    const div=document.createElement('div');div.className='q';
+    let opts='';item.opts.forEach((o,j)=>{opts+='<button class="opt" data-q="'+i+'" data-o="'+j+'">'+o+'</button>';});
+    div.innerHTML='<div style="display:flex;align-items:center;gap:10px"><b style="flex:1">'+(i+1)+'. '+item.q+'</b>'+
+      '<button class="speak" onclick="speak(\''+item.audio+'\',this)">🔊</button></div>'+
+      '<div class="opts">'+opts+'</div><div class="net" style="display:none" id="hint'+i+'">💡 '+item.hint+'</div>';
+    box.appendChild(div);
+  });
+  box.querySelectorAll('.opt').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const qi=+btn.dataset.q,oi=+btn.dataset.o,group=btn.parentElement;
+      if(group.dataset.done)return;group.dataset.done='1';answered++;
+      if(oi===quizData[qi].a){btn.classList.add('correct');correct++;}
+      else{btn.classList.add('wrong');group.children[quizData[qi].a].classList.add('correct');document.getElementById('hint'+qi).style.display='block';}
+      if(answered===quizData.length)showScore();
+    });
+  });
+}
+function showScore(){const s=document.getElementById('score');
+  let msg=correct===quizData.length?'🎉 เก่งมาก! เต็ม!':correct>=quizData.length*0.6?'👍 ดีมาก!':'💪 ทบทวนแล้วลองใหม่นะ';
+  s.textContent='คะแนน: '+correct+'/'+quizData.length+'  '+msg;s.style.display='block';}
+function resetQuiz(){buildQuiz();}
+
+/* ---------- VOCAB GAME ---------- */
+const VOCAB=[
+/* people & basics */
+{w:"hello",t:"สวัสดี",p:"คำทักทาย",e:"Hello, how are you today?",et:"สวัสดี วันนี้เป็นอย่างไรบ้าง"},
+{w:"thank you",t:"ขอบคุณ",p:"วลี",e:"Thank you for your help.",et:"ขอบคุณสำหรับความช่วยเหลือ"},
+{w:"sorry",t:"ขอโทษ / เสียใจ",p:"adj",e:"I am sorry for being late.",et:"ฉันขอโทษที่มาสาย"},
+{w:"please",t:"กรุณา / ได้โปรด",p:"adv",e:"Please sit down.",et:"กรุณานั่งลง"},
+{w:"yes",t:"ใช่",p:"adv",e:"Yes, I agree with you.",et:"ใช่ ฉันเห็นด้วยกับคุณ"},
+{w:"no",t:"ไม่",p:"adv",e:"No, I don't want it.",et:"ไม่ ฉันไม่ต้องการมัน"},
+{w:"friend",t:"เพื่อน",p:"noun",e:"She is my best friend.",et:"เธอเป็นเพื่อนสนิทของฉัน"},
+{w:"family",t:"ครอบครัว",p:"noun",e:"I love my family very much.",et:"ฉันรักครอบครัวของฉันมาก"},
+{w:"father",t:"พ่อ",p:"noun",e:"My father works in a factory.",et:"พ่อของฉันทำงานในโรงงาน"},
+{w:"mother",t:"แม่",p:"noun",e:"My mother cooks delicious food.",et:"แม่ของฉันทำอาหารอร่อย"},
+{w:"child",t:"เด็ก",p:"noun",e:"The child is playing in the park.",et:"เด็กกำลังเล่นอยู่ในสวน"},
+{w:"people",t:"ผู้คน",p:"noun",e:"Many people live in this city.",et:"มีผู้คนมากมายอาศัยในเมืองนี้"},
+{w:"man",t:"ผู้ชาย",p:"noun",e:"The man is reading a newspaper.",et:"ผู้ชายกำลังอ่านหนังสือพิมพ์"},
+{w:"woman",t:"ผู้หญิง",p:"noun",e:"The woman is a doctor.",et:"ผู้หญิงคนนั้นเป็นหมอ"},
+{w:"name",t:"ชื่อ",p:"noun",e:"What is your name?",et:"คุณชื่ออะไร"},
+/* common verbs */
+{w:"go",t:"ไป",p:"verb",e:"I go to work by bus.",et:"ฉันไปทำงานด้วยรถบัส"},
+{w:"come",t:"มา",p:"verb",e:"Please come here.",et:"กรุณามาที่นี่"},
+{w:"eat",t:"กิน",p:"verb",e:"We eat dinner at seven.",et:"เรากินมื้อค่ำตอนเจ็ดโมง"},
+{w:"drink",t:"ดื่ม",p:"verb",e:"I drink water every day.",et:"ฉันดื่มน้ำทุกวัน"},
+{w:"sleep",t:"นอนหลับ",p:"verb",e:"Babies sleep a lot.",et:"ทารกนอนเยอะ"},
+{w:"work",t:"ทำงาน",p:"verb",e:"They work in an office.",et:"พวกเขาทำงานในออฟฟิศ"},
+{w:"study",t:"เรียน / ศึกษา",p:"verb",e:"I study English at night.",et:"ฉันเรียนภาษาอังกฤษตอนกลางคืน"},
+{w:"read",t:"อ่าน",p:"verb",e:"She likes to read books.",et:"เธอชอบอ่านหนังสือ"},
+{w:"write",t:"เขียน",p:"verb",e:"Write your name here.",et:"เขียนชื่อของคุณตรงนี้"},
+{w:"speak",t:"พูด",p:"verb",e:"Can you speak slowly?",et:"คุณพูดช้าๆ ได้ไหม"},
+{w:"listen",t:"ฟัง",p:"verb",e:"Listen to the teacher.",et:"ฟังคุณครู"},
+{w:"see",t:"เห็น / มองเห็น",p:"verb",e:"I can see the mountain.",et:"ฉันมองเห็นภูเขา"},
+{w:"look",t:"มอง / ดู",p:"verb",e:"Look at the beautiful sky.",et:"มองดูท้องฟ้าสวยๆ สิ"},
+{w:"buy",t:"ซื้อ",p:"verb",e:"I want to buy a new phone.",et:"ฉันอยากซื้อโทรศัพท์ใหม่"},
+{w:"give",t:"ให้",p:"verb",e:"Give me the book, please.",et:"ส่งหนังสือให้ฉันหน่อย"},
+{w:"take",t:"เอา / หยิบ / พา",p:"verb",e:"Take an umbrella with you.",et:"เอาร่มไปด้วยนะ"},
+{w:"make",t:"ทำ / สร้าง",p:"verb",e:"She makes a cake.",et:"เธอทำเค้ก"},
+{w:"help",t:"ช่วยเหลือ",p:"verb",e:"Can you help me?",et:"คุณช่วยฉันได้ไหม"},
+{w:"want",t:"ต้องการ",p:"verb",e:"I want a cup of coffee.",et:"ฉันต้องการกาแฟหนึ่งแก้ว"},
+{w:"like",t:"ชอบ",p:"verb",e:"I like Thai food.",et:"ฉันชอบอาหารไทย"},
+{w:"love",t:"รัก",p:"verb",e:"I love my country.",et:"ฉันรักประเทศของฉัน"},
+{w:"know",t:"รู้ / รู้จัก",p:"verb",e:"I know the answer.",et:"ฉันรู้คำตอบ"},
+{w:"think",t:"คิด",p:"verb",e:"I think it is a good idea.",et:"ฉันคิดว่ามันเป็นความคิดที่ดี"},
+{w:"feel",t:"รู้สึก",p:"verb",e:"I feel happy today.",et:"วันนี้ฉันรู้สึกมีความสุข"},
+{w:"open",t:"เปิด",p:"verb",e:"Open the window, please.",et:"เปิดหน้าต่างหน่อย"},
+{w:"close",t:"ปิด",p:"verb",e:"Close the door quietly.",et:"ปิดประตูเบาๆ"},
+/* adjectives */
+{w:"good",t:"ดี",p:"adj",e:"This is a good restaurant.",et:"นี่เป็นร้านอาหารที่ดี"},
+{w:"bad",t:"แย่ / ไม่ดี",p:"adj",e:"The weather is bad today.",et:"วันนี้อากาศแย่"},
+{w:"big",t:"ใหญ่",p:"adj",e:"They live in a big house.",et:"พวกเขาอยู่ในบ้านหลังใหญ่"},
+{w:"small",t:"เล็ก",p:"adj",e:"I have a small car.",et:"ฉันมีรถคันเล็ก"},
+{w:"new",t:"ใหม่",p:"adj",e:"She bought a new dress.",et:"เธอซื้อชุดใหม่"},
+{w:"old",t:"เก่า / แก่",p:"adj",e:"This is an old building.",et:"นี่คืออาคารเก่า"},
+{w:"hot",t:"ร้อน",p:"adj",e:"The soup is very hot.",et:"ซุปร้อนมาก"},
+{w:"cold",t:"หนาว / เย็น",p:"adj",e:"It is cold in winter.",et:"หน้าหนาวอากาศหนาว"},
+{w:"happy",t:"มีความสุข / ดีใจ",p:"adj",e:"The children are happy.",et:"เด็กๆ มีความสุข"},
+{w:"sad",t:"เศร้า",p:"adj",e:"She feels sad today.",et:"วันนี้เธอรู้สึกเศร้า"},
+{w:"beautiful",t:"สวยงาม",p:"adj",e:"What a beautiful flower!",et:"ดอกไม้สวยจัง"},
+{w:"easy",t:"ง่าย",p:"adj",e:"This lesson is easy.",et:"บทเรียนนี้ง่าย"},
+{w:"difficult",t:"ยาก",p:"adj",e:"Math is difficult for me.",et:"คณิตศาสตร์ยากสำหรับฉัน"},
+{w:"fast",t:"เร็ว",p:"adj",e:"He is a fast runner.",et:"เขาวิ่งเร็ว"},
+{w:"slow",t:"ช้า",p:"adj",e:"The internet is slow.",et:"อินเทอร์เน็ตช้า"},
+{w:"clean",t:"สะอาด",p:"adj",e:"The room is clean.",et:"ห้องสะอาด"},
+{w:"dirty",t:"สกปรก",p:"adj",e:"My shoes are dirty.",et:"รองเท้าของฉันสกปรก"},
+{w:"expensive",t:"แพง",p:"adj",e:"This phone is expensive.",et:"โทรศัพท์เครื่องนี้แพง"},
+{w:"cheap",t:"ถูก / ราคาถูก",p:"adj",e:"The shirt is cheap.",et:"เสื้อตัวนี้ราคาถูก"},
+{w:"tired",t:"เหนื่อย",p:"adj",e:"I am tired after work.",et:"ฉันเหนื่อยหลังเลิกงาน"},
+{w:"hungry",t:"หิว",p:"adj",e:"I am hungry. Let's eat.",et:"ฉันหิว ไปกินกันเถอะ"},
+{w:"busy",t:"ยุ่ง",p:"adj",e:"She is busy at work.",et:"เธอยุ่งกับงาน"},
+{w:"important",t:"สำคัญ",p:"adj",e:"This is an important meeting.",et:"นี่คือการประชุมที่สำคัญ"},
+/* food & drink */
+{w:"food",t:"อาหาร",p:"noun",e:"Thai food is delicious.",et:"อาหารไทยอร่อย"},
+{w:"water",t:"น้ำ",p:"noun",e:"Can I have some water?",et:"ขอน้ำหน่อยได้ไหม"},
+{w:"rice",t:"ข้าว",p:"noun",e:"We eat rice every day.",et:"เรากินข้าวทุกวัน"},
+{w:"coffee",t:"กาแฟ",p:"noun",e:"I drink coffee in the morning.",et:"ฉันดื่มกาแฟตอนเช้า"},
+{w:"milk",t:"นม",p:"noun",e:"Children should drink milk.",et:"เด็กๆ ควรดื่มนม"},
+{w:"egg",t:"ไข่",p:"noun",e:"I want a fried egg.",et:"ฉันอยากได้ไข่ดาว"},
+{w:"fruit",t:"ผลไม้",p:"noun",e:"Fruit is good for health.",et:"ผลไม้ดีต่อสุขภาพ"},
+{w:"vegetable",t:"ผัก",p:"noun",e:"Eat more vegetables.",et:"กินผักให้มากขึ้น"},
+{w:"meat",t:"เนื้อสัตว์",p:"noun",e:"He doesn't eat meat.",et:"เขาไม่กินเนื้อสัตว์"},
+{w:"chicken",t:"ไก่",p:"noun",e:"I would like chicken soup.",et:"ฉันขอซุปไก่"},
+{w:"sugar",t:"น้ำตาล",p:"noun",e:"No sugar in my tea, please.",et:"ชาของฉันไม่ใส่น้ำตาลนะ"},
+/* time */
+{w:"day",t:"วัน",p:"noun",e:"Have a nice day!",et:"ขอให้เป็นวันที่ดี"},
+{w:"week",t:"สัปดาห์",p:"noun",e:"I work five days a week.",et:"ฉันทำงานห้าวันต่อสัปดาห์"},
+{w:"month",t:"เดือน",p:"noun",e:"There are twelve months in a year.",et:"หนึ่งปีมีสิบสองเดือน"},
+{w:"year",t:"ปี",p:"noun",e:"Happy New Year!",et:"สวัสดีปีใหม่"},
+{w:"today",t:"วันนี้",p:"adv",e:"Today is Monday.",et:"วันนี้วันจันทร์"},
+{w:"tomorrow",t:"พรุ่งนี้",p:"adv",e:"See you tomorrow.",et:"เจอกันพรุ่งนี้"},
+{w:"yesterday",t:"เมื่อวาน",p:"adv",e:"I saw him yesterday.",et:"ฉันเจอเขาเมื่อวาน"},
+{w:"morning",t:"ตอนเช้า",p:"noun",e:"Good morning, everyone.",et:"อรุณสวัสดิ์ทุกคน"},
+{w:"night",t:"กลางคืน",p:"noun",e:"Good night, sleep well.",et:"ราตรีสวัสดิ์ หลับฝันดี"},
+{w:"time",t:"เวลา",p:"noun",e:"What time is it now?",et:"ตอนนี้กี่โมงแล้ว"},
+{w:"now",t:"ตอนนี้ / เดี๋ยวนี้",p:"adv",e:"Let's start now.",et:"เริ่มเดี๋ยวนี้กันเลย"},
+/* places */
+{w:"home",t:"บ้าน",p:"noun",e:"I am going home now.",et:"ฉันกำลังจะกลับบ้าน"},
+{w:"house",t:"บ้าน (ตัวอาคาร)",p:"noun",e:"Their house is very big.",et:"บ้านของพวกเขาใหญ่มาก"},
+{w:"school",t:"โรงเรียน",p:"noun",e:"The school is near my house.",et:"โรงเรียนอยู่ใกล้บ้านฉัน"},
+{w:"hospital",t:"โรงพยาบาล",p:"noun",e:"She works at a hospital.",et:"เธอทำงานที่โรงพยาบาล"},
+{w:"market",t:"ตลาด",p:"noun",e:"I buy fruit at the market.",et:"ฉันซื้อผลไม้ที่ตลาด"},
+{w:"shop",t:"ร้านค้า",p:"noun",e:"The shop opens at nine.",et:"ร้านเปิดตอนเก้าโมง"},
+{w:"office",t:"สำนักงาน / ออฟฟิศ",p:"noun",e:"My office is on the third floor.",et:"ออฟฟิศของฉันอยู่ชั้นสาม"},
+{w:"city",t:"เมือง",p:"noun",e:"Bangkok is a big city.",et:"กรุงเทพเป็นเมืองใหญ่"},
+{w:"country",t:"ประเทศ / ชนบท",p:"noun",e:"Thailand is a beautiful country.",et:"ประเทศไทยเป็นประเทศที่สวยงาม"},
+{w:"road",t:"ถนน",p:"noun",e:"Be careful on the road.",et:"ระวังตอนอยู่บนถนน"},
+{w:"room",t:"ห้อง",p:"noun",e:"My room is clean.",et:"ห้องของฉันสะอาด"},
+{w:"station",t:"สถานี",p:"noun",e:"The train station is over there.",et:"สถานีรถไฟอยู่ตรงนั้น"},
+{w:"airport",t:"สนามบิน",p:"noun",e:"We will meet at the airport.",et:"เราจะเจอกันที่สนามบิน"},
+{w:"restaurant",t:"ร้านอาหาร",p:"noun",e:"This restaurant is famous.",et:"ร้านอาหารนี้มีชื่อเสียง"},
+{w:"bank",t:"ธนาคาร",p:"noun",e:"The bank is closed today.",et:"วันนี้ธนาคารปิด"},
+/* transport */
+{w:"car",t:"รถยนต์",p:"noun",e:"He drives a red car.",et:"เขาขับรถสีแดง"},
+{w:"bus",t:"รถบัส / รถเมล์",p:"noun",e:"I take the bus to work.",et:"ฉันนั่งรถเมล์ไปทำงาน"},
+{w:"train",t:"รถไฟ",p:"noun",e:"The train is fast.",et:"รถไฟวิ่งเร็ว"},
+{w:"plane",t:"เครื่องบิน",p:"noun",e:"The plane lands at noon.",et:"เครื่องบินลงตอนเที่ยง"},
+{w:"bike",t:"จักรยาน",p:"noun",e:"She rides a bike to school.",et:"เธอขี่จักรยานไปโรงเรียน"},
+{w:"taxi",t:"แท็กซี่",p:"noun",e:"Let's take a taxi.",et:"นั่งแท็กซี่กันเถอะ"},
+{w:"boat",t:"เรือ",p:"noun",e:"We crossed the river by boat.",et:"เราข้ามแม่น้ำด้วยเรือ"},
+{w:"walk",t:"เดิน",p:"verb",e:"I walk to the office.",et:"ฉันเดินไปออฟฟิศ"},
+{w:"drive",t:"ขับรถ",p:"verb",e:"Can you drive a car?",et:"คุณขับรถเป็นไหม"},
+{w:"ticket",t:"ตั๋ว",p:"noun",e:"I need two tickets.",et:"ฉันต้องการตั๋วสองใบ"},
+/* body */
+{w:"head",t:"หัว / ศีรษะ",p:"noun",e:"My head hurts.",et:"ฉันปวดหัว"},
+{w:"hand",t:"มือ",p:"noun",e:"Wash your hands.",et:"ล้างมือของคุณ"},
+{w:"eye",t:"ตา / ดวงตา",p:"noun",e:"She has beautiful eyes.",et:"เธอมีดวงตาสวย"},
+{w:"face",t:"หน้า / ใบหน้า",p:"noun",e:"Wash your face in the morning.",et:"ล้างหน้าตอนเช้า"},
+{w:"foot",t:"เท้า",p:"noun",e:"My foot is cold.",et:"เท้าของฉันเย็น"},
+{w:"hair",t:"ผม / เส้นผม",p:"noun",e:"Her hair is long.",et:"ผมของเธอยาว"},
+{w:"heart",t:"หัวใจ",p:"noun",e:"My heart beats fast.",et:"หัวใจฉันเต้นเร็ว"},
+{w:"body",t:"ร่างกาย",p:"noun",e:"Exercise is good for the body.",et:"การออกกำลังกายดีต่อร่างกาย"},
+/* colors */
+{w:"red",t:"สีแดง",p:"adj",e:"I like the red one.",et:"ฉันชอบอันสีแดง"},
+{w:"blue",t:"สีน้ำเงิน",p:"adj",e:"The sky is blue.",et:"ท้องฟ้าสีฟ้า"},
+{w:"green",t:"สีเขียว",p:"adj",e:"The grass is green.",et:"หญ้าสีเขียว"},
+{w:"yellow",t:"สีเหลือง",p:"adj",e:"The sun looks yellow.",et:"ดวงอาทิตย์ดูเป็นสีเหลือง"},
+{w:"black",t:"สีดำ",p:"adj",e:"He wears a black shirt.",et:"เขาใส่เสื้อสีดำ"},
+{w:"white",t:"สีขาว",p:"adj",e:"She has a white cat.",et:"เธอมีแมวสีขาว"},
+{w:"color",t:"สี",p:"noun",e:"What is your favorite color?",et:"สีโปรดของคุณคือสีอะไร"},
+/* numbers */
+{w:"one",t:"หนึ่ง",p:"number",e:"I have one brother.",et:"ฉันมีพี่ชายหนึ่งคน"},
+{w:"two",t:"สอง",p:"number",e:"Give me two, please.",et:"ขอสองอันครับ"},
+{w:"three",t:"สาม",p:"number",e:"There are three cats.",et:"มีแมวสามตัว"},
+{w:"many",t:"มาก / หลาย",p:"adj",e:"There are many people here.",et:"ที่นี่มีคนมากมาย"},
+{w:"few",t:"น้อย / ไม่กี่",p:"adj",e:"Only a few seats are left.",et:"เหลือที่นั่งไม่กี่ที่"},
+{w:"all",t:"ทั้งหมด",p:"adj",e:"All the students passed.",et:"นักเรียนทุกคนผ่าน"},
+{w:"first",t:"อันดับแรก / ที่หนึ่ง",p:"adj",e:"This is my first time.",et:"นี่เป็นครั้งแรกของฉัน"},
+{w:"last",t:"สุดท้าย",p:"adj",e:"This is the last bus.",et:"นี่คือรถเมล์คันสุดท้าย"},
+/* weather & nature */
+{w:"rain",t:"ฝน / ฝนตก",p:"noun",e:"The rain stopped.",et:"ฝนหยุดตกแล้ว"},
+{w:"sun",t:"ดวงอาทิตย์ / แดด",p:"noun",e:"The sun is bright today.",et:"วันนี้แดดจ้า"},
+{w:"wind",t:"ลม",p:"noun",e:"The wind is strong.",et:"ลมแรง"},
+{w:"sky",t:"ท้องฟ้า",p:"noun",e:"The sky is clear.",et:"ท้องฟ้าแจ่มใส"},
+{w:"tree",t:"ต้นไม้",p:"noun",e:"The tree is very tall.",et:"ต้นไม้สูงมาก"},
+{w:"flower",t:"ดอกไม้",p:"noun",e:"She picked a flower.",et:"เธอเด็ดดอกไม้"},
+{w:"sea",t:"ทะเล",p:"noun",e:"We swam in the sea.",et:"เราว่ายน้ำในทะเล"},
+{w:"mountain",t:"ภูเขา",p:"noun",e:"They climbed the mountain.",et:"พวกเขาปีนภูเขา"},
+{w:"river",t:"แม่น้ำ",p:"noun",e:"The river is long.",et:"แม่น้ำยาว"},
+{w:"weather",t:"อากาศ / สภาพอากาศ",p:"noun",e:"The weather is nice today.",et:"วันนี้อากาศดี"},
+/* home & things */
+{w:"door",t:"ประตู",p:"noun",e:"Please close the door.",et:"กรุณาปิดประตู"},
+{w:"window",t:"หน้าต่าง",p:"noun",e:"Open the window for fresh air.",et:"เปิดหน้าต่างรับอากาศ"},
+{w:"table",t:"โต๊ะ",p:"noun",e:"The food is on the table.",et:"อาหารอยู่บนโต๊ะ"},
+{w:"chair",t:"เก้าอี้",p:"noun",e:"Please sit on the chair.",et:"กรุณานั่งบนเก้าอี้"},
+{w:"bed",t:"เตียง",p:"noun",e:"I make my bed every morning.",et:"ฉันเก็บเตียงทุกเช้า"},
+{w:"phone",t:"โทรศัพท์",p:"noun",e:"My phone is new.",et:"โทรศัพท์ของฉันใหม่"},
+{w:"book",t:"หนังสือ",p:"noun",e:"This book is interesting.",et:"หนังสือเล่มนี้น่าสนใจ"},
+{w:"key",t:"กุญแจ",p:"noun",e:"I lost my key.",et:"ฉันทำกุญแจหาย"},
+{w:"bag",t:"กระเป๋า",p:"noun",e:"Her bag is heavy.",et:"กระเป๋าของเธอหนัก"},
+{w:"money",t:"เงิน",p:"noun",e:"I don't have much money.",et:"ฉันมีเงินไม่มาก"},
+/* clothes */
+{w:"shirt",t:"เสื้อเชิ้ต",p:"noun",e:"He bought a new shirt.",et:"เขาซื้อเสื้อเชิ้ตใหม่"},
+{w:"shoes",t:"รองเท้า",p:"noun",e:"These shoes are too small.",et:"รองเท้าคู่นี้เล็กเกินไป"},
+{w:"hat",t:"หมวก",p:"noun",e:"Wear a hat in the sun.",et:"ใส่หมวกตอนแดดออก"},
+{w:"dress",t:"ชุดเดรส",p:"noun",e:"She wore a red dress.",et:"เธอใส่ชุดเดรสสีแดง"},
+{w:"wear",t:"สวมใส่",p:"verb",e:"I wear glasses.",et:"ฉันสวมแว่นตา"},
+/* jobs */
+{w:"teacher",t:"ครู",p:"noun",e:"My teacher is very kind.",et:"ครูของฉันใจดีมาก"},
+{w:"doctor",t:"หมอ / แพทย์",p:"noun",e:"The doctor is busy.",et:"หมอกำลังยุ่ง"},
+{w:"student",t:"นักเรียน / นักศึกษา",p:"noun",e:"I am a student.",et:"ฉันเป็นนักเรียน"},
+{w:"job",t:"งาน / อาชีพ",p:"noun",e:"She has a good job.",et:"เธอมีงานที่ดี"},
+{w:"police",t:"ตำรวจ",p:"noun",e:"Call the police.",et:"โทรเรียกตำรวจ"},
+{w:"driver",t:"คนขับรถ",p:"noun",e:"The bus driver is friendly.",et:"คนขับรถเมล์เป็นมิตร"},
+/* health & feelings */
+{w:"sick",t:"ป่วย / ไม่สบาย",p:"adj",e:"I feel sick today.",et:"วันนี้ฉันรู้สึกไม่สบาย"},
+{w:"pain",t:"ความเจ็บปวด",p:"noun",e:"I have a pain in my back.",et:"ฉันปวดหลัง"},
+{w:"medicine",t:"ยา",p:"noun",e:"Take this medicine after meals.",et:"กินยานี้หลังอาหาร"},
+{w:"afraid",t:"กลัว",p:"adj",e:"I am afraid of dogs.",et:"ฉันกลัวสุนัข"},
+{w:"angry",t:"โกรธ",p:"adj",e:"Don't be angry with me.",et:"อย่าโกรธฉันเลย"},
+{w:"glad",t:"ดีใจ / ยินดี",p:"adj",e:"I am glad to see you.",et:"ฉันดีใจที่ได้เจอคุณ"},
+{w:"ready",t:"พร้อม",p:"adj",e:"Are you ready to go?",et:"คุณพร้อมจะไปหรือยัง"},
+/* technology */
+{w:"computer",t:"คอมพิวเตอร์",p:"noun",e:"I use a computer at work.",et:"ฉันใช้คอมพิวเตอร์ที่ทำงาน"},
+{w:"internet",t:"อินเทอร์เน็ต",p:"noun",e:"The internet is very useful.",et:"อินเทอร์เน็ตมีประโยชน์มาก"},
+{w:"email",t:"อีเมล",p:"noun",e:"I sent you an email.",et:"ฉันส่งอีเมลให้คุณแล้ว"},
+{w:"message",t:"ข้อความ",p:"noun",e:"I got your message.",et:"ฉันได้รับข้อความของคุณแล้ว"},
+/* animals */
+{w:"dog",t:"สุนัข / หมา",p:"noun",e:"The dog is very friendly.",et:"สุนัขเป็นมิตรมาก"},
+{w:"cat",t:"แมว",p:"noun",e:"The cat is sleeping.",et:"แมวกำลังนอนหลับ"},
+{w:"bird",t:"นก",p:"noun",e:"A bird is singing.",et:"นกกำลังร้องเพลง"},
+{w:"fish",t:"ปลา",p:"noun",e:"We have fish for dinner.",et:"เรากินปลาเป็นมื้อค่ำ"},
+/* more useful verbs */
+{w:"start",t:"เริ่ม",p:"verb",e:"The movie starts at eight.",et:"หนังเริ่มตอนสองทุ่ม"},
+{w:"stop",t:"หยุด",p:"verb",e:"Please stop here.",et:"กรุณาหยุดตรงนี้"},
+{w:"wait",t:"รอ / คอย",p:"verb",e:"Please wait a moment.",et:"กรุณารอสักครู่"},
+{w:"learn",t:"เรียนรู้",p:"verb",e:"I want to learn English.",et:"ฉันอยากเรียนรู้ภาษาอังกฤษ"},
+{w:"understand",t:"เข้าใจ",p:"verb",e:"I understand the lesson.",et:"ฉันเข้าใจบทเรียน"},
+{w:"remember",t:"จำได้",p:"verb",e:"I can't remember his name.",et:"ฉันจำชื่อเขาไม่ได้"},
+{w:"forget",t:"ลืม",p:"verb",e:"Don't forget your keys.",et:"อย่าลืมกุญแจของคุณ"},
+{w:"find",t:"หา / พบ",p:"verb",e:"I can't find my phone.",et:"ฉันหาโทรศัพท์ไม่เจอ"},
+{w:"use",t:"ใช้",p:"verb",e:"Can I use your pen?",et:"ฉันขอใช้ปากกาของคุณได้ไหม"},
+{w:"call",t:"โทร / เรียก",p:"verb",e:"I will call you later.",et:"ฉันจะโทรหาคุณทีหลัง"},
+{w:"ask",t:"ถาม / ขอ",p:"verb",e:"May I ask a question?",et:"ฉันขอถามคำถามได้ไหม"},
+{w:"answer",t:"ตอบ",p:"verb",e:"Please answer my question.",et:"กรุณาตอบคำถามของฉัน"},
+{w:"meet",t:"พบ / เจอ",p:"verb",e:"Let's meet tomorrow.",et:"เจอกันพรุ่งนี้นะ"},
+{w:"try",t:"พยายาม / ลอง",p:"verb",e:"Try again, you can do it.",et:"ลองอีกครั้ง คุณทำได้"},
+{w:"pay",t:"จ่ายเงิน",p:"verb",e:"Can I pay by card?",et:"ฉันจ่ายด้วยบัตรได้ไหม"},
+{w:"need",t:"ต้องการ / จำเป็น",p:"verb",e:"I need your help.",et:"ฉันต้องการความช่วยเหลือจากคุณ"}
+];
+/* ================= SHARED ADAPTIVE LEVEL ENGINE ================= */
+const MAXLV=6;
+/* frequency-rank bands → difficulty ladder for the online 5,000-word pool */
+const BANDS=[[0,300],[300,800],[800,1500],[1500,2500],[2500,3500],[3500,5000]];
+const LV_NAMES=['เริ่มต้น','พื้นฐาน','กลางต้น','กลาง','กลางสูง','ขั้นสูง'];
+const CEFR=['A1','A1–A2','A2','B1','B1–B2','B2+'];
+let vLevel={lv:1,recent:[]}, lLevel={lv:1,recent:[]};
+let curatedByLv=[];
+
+/* bucket the 196 curated words by length → 6 difficulty levels (offline ladder) */
+function buildCuratedLevels(){
+  const sorted=[...VOCAB].sort((a,b)=>a.w.length-b.w.length||a.w.localeCompare(b.w));
+  const per=Math.ceil(sorted.length/MAXLV);
+  curatedByLv=[];
+  for(let i=0;i<MAXLV;i++){
+    let b=sorted.slice(i*per,(i+1)*per);
+    if(!b.length)b=sorted.slice(); // guard: never empty
+    curatedByLv.push(b);
+  }
+}
+
+/* the "teacher": rolling window of 5, promote on ≥4/5, demote on ≤1/5 */
+function gradeLevel(state,ok){
+  state.recent.push(ok?1:0);
+  if(state.recent.length>5)state.recent.shift();
+  if(state.recent.length>=5){
+    const c=state.recent.reduce((a,b)=>a+b,0);
+    if(c>=4&&state.lv<MAXLV){state.lv++;state.recent=[];return 'up';}
+    if(c<=1&&state.lv>1){state.lv--;state.recent=[];return 'down';}
+  }
+  return null;
+}
+
+function renderLevelBar(elId,state,change){
+  const el=document.getElementById(elId);if(!el)return;
+  const pct=Math.round(((state.lv-1)/(MAXLV-1))*100);
+  let dots='';for(let i=0;i<5;i++){
+    const v=state.recent[i];
+    dots+='<div class="d'+(v===1?' ok':v===0?' no':'')+'"></div>';
+  }
+  let toast='';
+  if(change==='up')toast='<div class="lvtoast up">🚀 เก่งขึ้น! เลื่อนไป Level '+state.lv+' — '+LV_NAMES[state.lv-1]+' (ศัพท์ยากขึ้น)</div>';
+  else if(change==='down')toast='<div class="lvtoast down">📉 ปรับลงเป็น Level '+state.lv+' — '+LV_NAMES[state.lv-1]+' (ขอซ้อมคำง่ายลงหน่อย)</div>';
+  el.innerHTML=
+    '<div class="lvtop">'+
+      '<div class="lvbadge"><div class="num">'+state.lv+'</div>'+
+        '<div class="meta"><b>Level '+state.lv+' · '+LV_NAMES[state.lv-1]+'</b>'+
+        '<span>เทียบ CEFR ~ '+CEFR[state.lv-1]+' · ครูดูจาก 5 ข้อล่าสุด</span></div></div>'+
+      '<div class="lvprog"><div class="track"><div class="fill" style="width:'+pct+'%"></div></div>'+
+        '<div class="lab">ความก้าวหน้าระดับ '+pct+'%</div></div>'+
+    '</div>'+
+    '<div class="lvdots">'+dots+'</div>'+toast;
+}
+
+/* pick a raw English word from the online pool within the level's frequency band */
+function pickOnlineRaw(lv){
+  const b=BANDS[lv-1]||BANDS[0];
+  const lo=Math.min(b[0],bigWords.length-1), hi=Math.min(b[1],bigWords.length);
+  if(hi<=lo)return bigWords[Math.floor(Math.random()*bigWords.length)];
+  return bigWords[lo+Math.floor(Math.random()*(hi-lo))];
+}
+/* curated entries near a level (current ± neighbours) for distractors */
+function nearLevelCurated(lv){
+  let pool=(curatedByLv[lv-1]||[]).slice();
+  if(curatedByLv[lv-2])pool=pool.concat(curatedByLv[lv-2]);
+  if(curatedByLv[lv])pool=pool.concat(curatedByLv[lv]);
+  if(pool.length<6)pool=VOCAB.slice();
+  return pool;
+}
+function thDistractors(lv,exclude,n){
+  const seen={};const out=[];
+  shuffle(nearLevelCurated(lv).map(x=>x.t)).forEach(t=>{
+    if(t!==exclude&&!seen[t]&&out.length<n){seen[t]=1;out.push(t);}
+  });
+  while(out.length<n){const t=VOCAB[Math.floor(Math.random()*VOCAB.length)].t;if(t!==exclude&&!seen[t]){seen[t]=1;out.push(t);}}
+  return out;
+}
+function enDistractorsOffline(lv,exclude,n){
+  const seen={};const out=[];
+  shuffle(nearLevelCurated(lv).map(x=>x.w)).forEach(w=>{
+    if(w!==exclude&&!seen[w]&&out.length<n){seen[w]=1;out.push(w);}
+  });
+  while(out.length<n){const w=VOCAB[Math.floor(Math.random()*VOCAB.length)].w;if(w!==exclude&&!seen[w]){seen[w]=1;out.push(w);}}
+  return out;
+}
+function enDistractorsOnline(lv,exclude,n){
+  const seen={};const out=[];
+  const b=BANDS[lv-1]||BANDS[0];
+  const lo=Math.min(b[0],bigWords.length-1),hi=Math.min(b[1],bigWords.length);
+  let guard=0;
+  while(out.length<n&&guard++<60){
+    const w=(hi>lo)?bigWords[lo+Math.floor(Math.random()*(hi-lo))]:bigWords[Math.floor(Math.random()*bigWords.length)];
+    if(w&&w!==exclude&&!seen[w]){seen[w]=1;out.push(w);}
+  }
+  while(out.length<n){const e=VOCAB[Math.floor(Math.random()*VOCAB.length)].w;if(e!==exclude&&!seen[e]){seen[e]=1;out.push(e);}}
+  return out;
+}
+
+/* ---- shared online helpers ---- */
+let bigWords=[];                 // fetched English frequency list (words only)
+let bigLoaded=false,bigLoading=false;
+const trCache={};                // en->th translation cache
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+async function translateTH(text){
+  if(trCache[text])return trCache[text];
+  const res=await fetch('https://api.mymemory.translated.net/get?q='+encodeURIComponent(text)+'&langpair=en|th');
+  const data=await res.json();
+  const th=data&&data.responseData&&data.responseData.translatedText;
+  if(!th)throw new Error('no-tr');
+  trCache[text]=th;return th;
+}
+async function fetchExample(word){
+  try{
+    const res=await fetch('https://api.dictionaryapi.dev/api/v2/entries/en/'+encodeURIComponent(word));
+    if(!res.ok)throw 0;
+    const data=await res.json();
+    for(const e of data)for(const m of (e.meanings||[]))for(const d of (m.definitions||[]))
+      if(d.example)return {ex:d.example,pos:m.partOfSpeech||''};
+    const pos=data[0]&&data[0].meanings&&data[0].meanings[0]?data[0].meanings[0].partOfSpeech:'';
+    return {ex:'',pos:pos};
+  }catch(e){return {ex:'',pos:''};}
+}
+async function loadBigList(statusId){
+  const sid=statusId||'vpoolStatus';
+  while(bigLoading)await new Promise(r=>setTimeout(r,150));
+  if(bigLoaded)return true;
+  bigLoading=true;
+  const st=document.getElementById(sid);
+  if(st)st.textContent='⏳ กำลังโหลดคลังคำ 5,000 คำจากอินเทอร์เน็ต...';
+  const urls=[
+    'https://raw.githubusercontent.com/first20hours/google-10000-english/master/google-10000-english-usa-no-swears.txt',
+    'https://raw.githubusercontent.com/first20hours/google-10000-english/master/google-10000-english-no-swears.txt'
+  ];
+  for(const u of urls){
+    try{
+      const res=await fetch(u);if(!res.ok)continue;
+      const txt=await res.text();
+      const list=txt.split(/\s+/).map(s=>s.trim().toLowerCase()).filter(w=>w.length>1&&/^[a-z]+$/.test(w));
+      if(list.length>=1000){bigWords=list.slice(0,5000);bigLoaded=true;break;}
+    }catch(e){}
+  }
+  bigLoading=false;
+  if(!bigLoaded&&st)st.innerHTML='⚠️ โหลดคลังออนไลน์ไม่ได้ (ต้องต่ออินเทอร์เน็ต) — ใช้ชุด 196 คำคัดสรรแทน';
+  return bigLoaded;
+}
+
+/* ================= VOCAB GAME (level-aware) ================= */
+let vIdx=-1,vScore=0,vStreak=0,vBest=0,vTotal=0,vAnswered=false,vLastW='';
+let vMode='off';                 // 'off' = curated 196 | 'on' = online 5,000
+
+function setMode(m){
+  vMode=m;paintMode();
+  if(m==='on'){loadBigList('vpoolStatus').then(ok=>{if(!ok){vMode='off';paintMode();}initVocab();});}
+  else{document.getElementById('vpoolStatus').textContent='📦 โหมดออฟไลน์: 196 คำคัดสรร แปลไทยตรวจมือ + ตัวอย่างพร้อมใช้ (ไต่ระดับตามความยาวคำ)';initVocab();}
+}
+function paintMode(){
+  document.getElementById('modeOff').className=vMode==='off'?'btn':'btn ghost';
+  document.getElementById('modeOn').className=vMode==='on'?'btn':'btn ghost';
+  document.getElementById('modeOff').style.flex='1';document.getElementById('modeOn').style.flex='1';
+}
+function loading(on){
+  const box=document.getElementById('vopts');
+  if(on){box.innerHTML='<div class="spinner" style="grid-column:1/-1"></div>';document.getElementById('vword').innerHTML='<div class="w" style="font-size:22px;color:var(--muted)">กำลังเตรียมคำ...</div>';}
+}
+async function nextWord(){
+  vAnswered=false;
+  document.getElementById('vctx').classList.remove('show');
+  document.getElementById('vnext').style.display='none';
+  renderLevelBar('lvVocab',vLevel,null);
+  if(vMode==='on'&&bigLoaded){await nextWordOnline();}
+  else{nextWordOffline();}
+}
+function nextWordOffline(){
+  const bucket=curatedByLv[vLevel.lv-1]||VOCAB;
+  let cur;do{cur=bucket[Math.floor(Math.random()*bucket.length)];}while(cur.w===vLastW&&bucket.length>1);
+  vLastW=cur.w;vIdx=0;
+  renderWord(cur);
+  renderOpts(shuffle([cur.t,...thDistractors(vLevel.lv,cur.t,3)]),cur);
+}
+async function nextWordOnline(){
+  loading(true);
+  let cur=null,tries=0;
+  while(!cur&&tries<5){
+    tries++;
+    const w=pickOnlineRaw(vLevel.lv);
+    if(w===vLastW)continue;
+    try{
+      const [th,meta]=await Promise.all([translateTH(w),fetchExample(w)]);
+      let ex=meta.ex,et='';
+      if(!ex)ex='This is the word "'+w+'".';
+      try{et=await translateTH(ex);}catch(e){et='(แปลประโยคไม่สำเร็จ)';}
+      cur={w:w,t:th,p:meta.pos||'',e:ex,et:et,online:true};
+    }catch(e){}
+  }
+  if(!cur){document.getElementById('vpoolStatus').innerHTML='⚠️ บริการแปลออนไลน์ไม่ตอบสนอง ลองใหม่หรือสลับเป็นโหมดออฟไลน์';return;}
+  vLastW=cur.w;
+  renderWord(cur);
+  renderOpts(shuffle([cur.t,...thDistractors(vLevel.lv,cur.t,3)]),cur);
+}
+function renderWord(cur){
+  document.getElementById('vword').innerHTML='<div class="w">'+cur.w+'</div><div class="pos">'+(cur.p||'')+
+    ' <button class="speak sm" style="vertical-align:middle" onclick="speak(\''+cur.w.replace(/'/g,"")+'\',this)">🔊</button></div>';
+}
+function renderOpts(opts,cur){
+  const box=document.getElementById('vopts');box.innerHTML='';
+  opts.forEach(o=>{
+    const b=document.createElement('button');b.className='vopt';b.textContent=o;
+    b.onclick=()=>chooseV(b,o,cur);box.appendChild(b);
+  });
+}
+function chooseV(btn,val,cur){
+  if(vAnswered)return;vAnswered=true;vTotal++;
+  const right=val===cur.t;
+  document.querySelectorAll('#vopts .vopt').forEach(b=>{
+    if(b.textContent===cur.t)b.classList.add('correct');
+    else if(b===btn)b.classList.add('wrong');
+    b.style.pointerEvents='none';
+  });
+  if(right){vScore++;vStreak++;vBest=Math.max(vBest,vStreak);}else{vStreak=0;}
+  const change=gradeLevel(vLevel,right);
+  renderLevelBar('lvVocab',vLevel,change);
+  const ctx=document.getElementById('vctx');
+  ctx.innerHTML='<div class="lead">'+(right?'✅ ถูกต้อง!':'❌ คำตอบที่ถูกคือ "'+cur.t+'"')+' ลองดูตัวอย่างเวลาใช้จริง 👇</div>'+
+    '<div class="sent">"'+cur.e+'" <button class="speak" onclick="speak(\''+cur.e.replace(/'/g,"")+'\',this)">🔊</button></div>'+
+    '<div class="sentth">แปล: '+cur.et+'</div>';
+  ctx.classList.add('show');
+  document.getElementById('vnext').style.display='inline-block';
+  updateVStats();
+  if(right)speak(cur.w);
+}
+function updateVStats(){
+  document.getElementById('vScore').textContent=vScore;
+  document.getElementById('vTotal').textContent=vTotal;
+  document.getElementById('vStreak').textContent=vStreak;
+  document.getElementById('vBest').textContent=vBest;
+}
+function initVocab(){
+  if(!curatedByLv.length)buildCuratedLevels();
+  vScore=0;vStreak=0;vBest=0;vTotal=0;vLastW='';vIdx=0;
+  vLevel={lv:1,recent:[]};
+  updateVStats();paintMode();
+  if(vMode==='off'&&!document.getElementById('vpoolStatus').textContent)
+    document.getElementById('vpoolStatus').textContent='📦 โหมดออฟไลน์: 196 คำคัดสรร แปลไทยตรวจมือ + ตัวอย่างพร้อมใช้ (ไต่ระดับตามความยาวคำ)';
+  renderLevelBar('lvVocab',vLevel,null);
+  nextWord();
+}
+
+/* ================= LISTENING GAME (level-aware) ================= */
+let lIdx=-1,lScore=0,lStreak=0,lBest=0,lTotal=0,lAnswered=false,lLastW='',lCur=null;
+let lMode='off';
+
+function setLMode(m){
+  lMode=m;paintLMode();
+  if(m==='on'){loadBigList('lpoolStatus').then(ok=>{if(!ok){lMode='off';paintLMode();}initListen();});}
+  else{document.getElementById('lpoolStatus').textContent='📦 โหมดออฟไลน์: 196 คำคัดสรร (ไต่ระดับตามความยาวคำ) — ฟังเสียงแล้วเลือกคำ';initListen();}
+}
+function paintLMode(){
+  document.getElementById('lmodeOff').className=lMode==='off'?'btn':'btn ghost';
+  document.getElementById('lmodeOn').className=lMode==='on'?'btn':'btn ghost';
+  document.getElementById('lmodeOff').style.flex='1';document.getElementById('lmodeOn').style.flex='1';
+}
+function lLoading(on){
+  const box=document.getElementById('lopts');
+  if(on)box.innerHTML='<div class="spinner" style="grid-column:1/-1"></div>';
+}
+async function nextListen(){
+  lAnswered=false;
+  document.getElementById('lctx').classList.remove('show');
+  document.getElementById('lnext').style.display='none';
+  renderLevelBar('lvListen',lLevel,null);
+  if(lMode==='on'&&bigLoaded){await nextListenOnline();}
+  else{nextListenOffline();}
+}
+function nextListenOffline(){
+  const bucket=curatedByLv[lLevel.lv-1]||VOCAB;
+  let cur;do{cur=bucket[Math.floor(Math.random()*bucket.length)];}while(cur.w===lLastW&&bucket.length>1);
+  lLastW=cur.w;lCur=cur;lIdx=0;
+  renderLOpts(shuffle([cur.w,...enDistractorsOffline(lLevel.lv,cur.w,3)]),cur);
+  setTimeout(()=>speak(cur.w),350);
+}
+async function nextListenOnline(){
+  lLoading(true);
+  let cur=null,tries=0;
+  while(!cur&&tries<5){
+    tries++;
+    const w=pickOnlineRaw(lLevel.lv);
+    if(w===lLastW)continue;
+    try{
+      const [th,meta]=await Promise.all([translateTH(w),fetchExample(w)]);
+      let ex=meta.ex,et='';
+      if(!ex)ex='This is the word "'+w+'".';
+      try{et=await translateTH(ex);}catch(e){et='(แปลประโยคไม่สำเร็จ)';}
+      cur={w:w,t:th,p:meta.pos||'',e:ex,et:et,online:true};
+    }catch(e){}
+  }
+  if(!cur){document.getElementById('lpoolStatus').innerHTML='⚠️ บริการออนไลน์ไม่ตอบสนอง ลองใหม่หรือสลับเป็นโหมดออฟไลน์';return;}
+  lLastW=cur.w;lCur=cur;
+  renderLOpts(shuffle([cur.w,...enDistractorsOnline(lLevel.lv,cur.w,3)]),cur);
+  setTimeout(()=>speak(cur.w),350);
+}
+function renderLOpts(opts,cur){
+  const box=document.getElementById('lopts');box.innerHTML='';
+  opts.forEach(o=>{
+    const b=document.createElement('button');b.className='vopt';b.textContent=o;
+    b.onclick=()=>chooseL(b,o,cur);box.appendChild(b);
+  });
+}
+function replayListen(){if(lCur)speak(lCur.w);}
+function chooseL(btn,val,cur){
+  if(lAnswered)return;lAnswered=true;lTotal++;
+  const right=val===cur.w;
+  document.querySelectorAll('#lopts .vopt').forEach(b=>{
+    if(b.textContent===cur.w)b.classList.add('correct');
+    else if(b===btn)b.classList.add('wrong');
+    b.style.pointerEvents='none';
+  });
+  if(right){lScore++;lStreak++;lBest=Math.max(lBest,lStreak);}else{lStreak=0;}
+  const change=gradeLevel(lLevel,right);
+  renderLevelBar('lvListen',lLevel,change);
+  const ctx=document.getElementById('lctx');
+  ctx.innerHTML='<div class="lead">'+(right?'✅ ถูกต้อง! ได้ยินว่า':'❌ คำที่ถูกคือ')+' "'+cur.w+'" '+
+    '<button class="speak sm" style="vertical-align:middle" onclick="speak(\''+cur.w.replace(/'/g,"")+'\',this)">🔊</button></div>'+
+    '<div class="pos" style="color:var(--muted);font-weight:700;margin-bottom:6px">'+(cur.p||'')+' · แปลว่า '+cur.t+'</div>'+
+    '<div class="sent">"'+cur.e+'" <button class="speak" onclick="speak(\''+cur.e.replace(/'/g,"")+'\',this)">🔊</button></div>'+
+    '<div class="sentth">แปล: '+cur.et+'</div>';
+  ctx.classList.add('show');
+  document.getElementById('lnext').style.display='inline-block';
+  updateLStats();
+}
+function updateLStats(){
+  document.getElementById('lScore').textContent=lScore;
+  document.getElementById('lTotal').textContent=lTotal;
+  document.getElementById('lStreak').textContent=lStreak;
+  document.getElementById('lBest').textContent=lBest;
+}
+function initListen(){
+  if(!curatedByLv.length)buildCuratedLevels();
+  lScore=0;lStreak=0;lBest=0;lTotal=0;lLastW='';lCur=null;lIdx=0;
+  lLevel={lv:1,recent:[]};
+  updateLStats();paintLMode();
+  if(lMode==='off'&&!document.getElementById('lpoolStatus').textContent)
+    document.getElementById('lpoolStatus').textContent='📦 โหมดออฟไลน์: 196 คำคัดสรร (ไต่ระดับตามความยาวคำ) — ฟังเสียงแล้วเลือกคำ';
+  renderLevelBar('lvListen',lLevel,null);
+  nextListen();
+}
+</script>
+</body>
+</html>
